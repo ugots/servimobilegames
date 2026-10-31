@@ -7,7 +7,7 @@ function sound(kind) {
 
 const menu = mountMenu({
   title: "Cipher Shift",
-  howTo: "Every ring is off by the same turn. Pick the one turn that reveals the word.",
+  howTo: "Every ring is off by the same turn: tap a brass side plate or drag the rings to find the one turn that reveals the word; three words clear a level.",
   onPlay: () => {
     window.__cipher.show();
     window.__cipher.start();

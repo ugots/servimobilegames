@@ -39,18 +39,21 @@ html, body {
 }
 
 /* header */
-.cs-header {
+.cs-hud {
   width: 100%;
   max-width: 1500px;
   height: 56px;
   flex: none;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 14px;
+  padding: 0 6px;
 }
-.cs-brand { display: flex; align-items: center; gap: 10px; flex: 1; min-width: 0; }
+.cs-spacer { flex: 1; }
+.cs-sr { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .cs-logo { width: 36px; height: 36px; display: block; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.5)); }
-.cs-brand h1 { margin: 0; font-size: 1.35rem; color: var(--cs-brass-hi); letter-spacing: 0.5px; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6); white-space: nowrap; }
+#cs-level { font-size: 1.2rem; font-weight: 700; color: var(--cs-brass-hi); text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); }
+.cs-tools { width: 100%; max-width: 1500px; height: 44px; flex: none; display: flex; align-items: center; justify-content: flex-end; gap: 10px; padding: 0 6px; }
 
 /* brass buttons */
 .cs-small, .cs-turn {
@@ -76,19 +79,9 @@ html, body {
 .cs-icon[aria-pressed="true"] .cs-slash { display: inline; }
 
 /* status */
-.cs-status {
-  width: 100%;
-  max-width: 1500px;
-  flex: none;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 6px;
-}
-#cs-score { font-size: 1.5rem; font-weight: 700; color: var(--cs-cream); text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); }
+#cs-score { font-size: 1.2rem; font-weight: 700; color: var(--cs-cream); text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); }
 #cs-lives { display: flex; gap: 10px; }
-.cs-seal { width: 38px; height: 38px; display: block; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6)); transition: filter 0.3s, opacity 0.3s; }
+.cs-seal { width: 34px; height: 34px; display: block; filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.6)); transition: filter 0.3s, opacity 0.3s; }
 .cs-seal svg { width: 100%; height: 100%; display: block; }
 .cs-wax { fill: #8e1f1a; stroke: #5a0f0c; stroke-width: 1.5; }
 .cs-wax-ring { fill: #9b2a24; stroke: #c4564e; stroke-width: 1; opacity: 0.9; }
@@ -99,38 +92,39 @@ html, body {
 
 /* dial */
 .cs-stage { flex: 1; width: 100%; min-height: 0; display: flex; align-items: center; justify-content: center; }
-#cs-dial { display: block; width: min(1100px, 94vw); height: 400px; max-height: 100%; overflow: visible; }
+#cs-dial { display: block; width: min(1100px, 94vw); height: 560px; max-height: 100%; overflow: visible; touch-action: none; }
+#cs-dial .cs-rings { touch-action: none; }
 #cs-dial.cs-glowing { filter: drop-shadow(0 0 18px rgba(255, 207, 90, 0.8)); }
 
-/* controls */
-.cs-controls { width: min(1100px, 100%); flex: none; display: flex; gap: 16px; justify-content: center; }
-.cs-turn { flex: 1; min-height: 72px; max-width: 260px; border-radius: 14px; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 16px; }
-.cs-turn svg { width: 30px; height: 30px; fill: none; stroke: var(--cs-ink); stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; flex: none; }
-.cs-hint { flex: none; margin: 14px 0 0; color: #bfae86; font-size: 1rem; text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7); }
+/* again button on the round-over card */
+.cs-turn { min-height: 60px; max-width: 260px; border-radius: 14px; font-size: 1.25rem; display: flex; align-items: center; justify-content: center; gap: 10px; padding: 0 16px; }
 
-/* phone: 2x2 chevron buttons at the bottom, no hint */
+/* level pips: filled = brass, empty = dark socket */
+#cs-level, #cs-score { white-space: nowrap; }
+.cs-pips { display: inline-flex; gap: 6px; margin-left: 8px; align-items: center; }
+.cs-pip { width: 12px; height: 12px; border-radius: 50%; border: 1.5px solid var(--cs-brass-lo); background: rgba(0, 0, 0, 0.35); box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.6); }
+.cs-pip.on { background: radial-gradient(circle at 35% 30%, #f6dc9c, var(--cs-brass) 60%, var(--cs-brass-lo)); border-color: #3a2810; box-shadow: 0 0 6px rgba(255, 207, 90, 0.6); }
+
+/* phone: dial 60vh, plates inside it */
 @media (max-width: 640px) {
-  #cs-play { padding: 0 10px 12px; }
-  .cs-brand h1 { font-size: 1.15rem; }
-  #cs-dial { width: 100%; height: 250px; }
-  .cs-controls { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-  .cs-turn { max-width: none; min-height: 60px; font-size: 1.1rem; }
-  .cs-hint { display: none; }
+  #cs-play { padding: 0 0 12px; }
+  .cs-hud { gap: 8px; }
+  .cs-pips { margin-left: 0; gap: 5px; }
+  #cs-level, #cs-score { font-size: 1.1rem; }
+  #cs-dial { width: 100%; height: 60vh; }
 }
 @media (min-width: 1024px) {
-  .cs-header { height: 72px; }
+  .cs-hud { height: 72px; }
   .cs-logo { width: 44px; height: 44px; }
-  .cs-brand h1 { font-size: 1.8rem; }
-  .cs-status { height: 64px; }
-  #cs-score { font-size: 2rem; }
+  #cs-level { font-size: 1.6rem; }
+  .cs-pips { gap: 8px; }
+  .cs-pip { width: 16px; height: 16px; }
+  #cs-score { font-size: 1.6rem; }
+  .cs-tools { height: 52px; }
   .cs-seal { width: 46px; height: 46px; }
   .cs-small { height: 48px; font-size: 1.1rem; }
   .cs-icon { width: 52px; }
-  #cs-dial { height: 420px; }
-}
-@media (max-height: 760px) and (min-width: 1024px) {
-  #cs-dial { height: 340px; }
-  .cs-turn { min-height: 60px; }
+  #cs-dial { width: min(1100px, 94vw); height: 560px; }
 }
 
 /* round-over card */
@@ -143,7 +137,7 @@ html, body {
   justify-content: center;
   background: rgba(14, 9, 4, 0.62);
 }
-.cs-card {
+.cs-card, .cs-banner {
   width: min(420px, 90vw);
   padding: 28px 26px 30px;
   text-align: center;
@@ -152,7 +146,9 @@ html, body {
   background: radial-gradient(ellipse at 50% 0%, #4a3419 0%, #2a1d0e 75%);
   box-shadow: inset 0 1px 0 rgba(255, 224, 160, 0.35), inset 0 0 40px rgba(0, 0, 0, 0.5), 0 14px 40px rgba(0, 0, 0, 0.7);
 }
-.cs-card h2 { margin: 0 0 14px; font-size: 2rem; color: var(--cs-brass-hi); text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); }
+.cs-banner { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; z-index: 8000; width: auto; min-width: 220px; }
+.cs-card h2, .cs-banner h2 { margin: 0 0 14px; font-size: 2rem; color: var(--cs-brass-hi); text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7); }
+.cs-banner h2 { margin: 0; }
 .cs-card p { margin: 8px 0; font-size: 1.2rem; color: var(--cs-cream); }
 .cs-again { margin: 22px auto 0; width: 100%; max-width: 280px; }
 

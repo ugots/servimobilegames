@@ -42,7 +42,7 @@ const ShooterSound = (() => {
       muted = localStorage.getItem("shooter.muted") === "1";
     } catch (e) {}
 
-    import("/_base/audio.js").then((m) => (extras = m.createAudio())).catch(() => {});
+    import("../../_base/audio.js").then((m) => (extras = m.createAudio())).catch(() => {});
 
     function ctx() {
       if (!ac) {

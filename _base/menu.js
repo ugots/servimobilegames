@@ -1,6 +1,7 @@
 // Shared title/pause/game-over menu kit (D-038 complete loop, D-041 pause
 // keys, D-042 auto-pause on blur). Plain ES module, no build step, no deps.
 import { mountPromo } from "./promo.js";
+import { showInterstitial, mountRewardButton } from "./ads.js";
 
 function el(tag, cls, html) {
   const n = document.createElement(tag);
@@ -14,7 +15,7 @@ function el(tag, cls, html) {
  * Renders title screen, pause overlay, game-over overlay into <body>.
  * Returns { showTitle, showPlay, showPause, showGameOver, destroy }.
  */
-export function mountMenu({ title, onPlay, onExit, howTo, onPause, onResume, onFinish } = {}) {
+export function mountMenu({ title, onPlay, onExit, howTo, onPause, onResume, onFinish, onContinue } = {}) {
   const root = el("div", "gk-menu-root");
   document.body.appendChild(root);
 
@@ -62,6 +63,7 @@ export function mountMenu({ title, onPlay, onExit, howTo, onPause, onResume, onF
   overButtons.appendChild(againBtn);
   overButtons.appendChild(overExitBtn);
   overScreen.appendChild(overButtons);
+  mountRewardButton(overButtons, { onReward: onContinue && (() => { hideAll(); paused = false; onContinue(); }) });
   mountPromo({ current: promoSlug, parent: overScreen });
   root.appendChild(overScreen);
 
@@ -90,6 +92,7 @@ export function mountMenu({ title, onPlay, onExit, howTo, onPause, onResume, onF
     overScore.textContent = score !== undefined ? `Score: ${score}` : "";
     overScreen.classList.remove("gk-hidden");
     paused = true;
+    showInterstitial({ key: promoSlug });
   }
 
   playBtn.addEventListener("click", () => { showPlay(); if (onPlay) onPlay(); });

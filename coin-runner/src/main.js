@@ -2,7 +2,7 @@ import { AudioEngine } from "./audio.js";
 import { InputManager, detectMobile } from "./input.js";
 import { Game } from "./game.js";
 import { createScene3D } from "./scene3d.js";
-import { mountHud } from "/_base/hud.js";
+import { mountHud } from "../../_base/hud.js";
 
 const RENDER_2D = new URLSearchParams(window.location.search).get("render") === "2d";
 

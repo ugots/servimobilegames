@@ -222,6 +222,8 @@ import { mountPromo } from "../_base/promo.js";
 mountPromo({ current: "number-game", parent: document.getElementById("screen-menu") }).el.classList.add("gk-promo-quiet");
 document.querySelector("#screen-menu .gk-promo").style.cssText = "position:absolute;" + (innerWidth >= 900 ? "top:12px" : "bottom:8px") + ";left:50%;transform:translateX(-50%);z-index:5";
 mountPromo({ current: "number-game", parent: document.getElementById("screen-finish") }).el.style.cssText = "position:absolute;top:84px;left:50%;transform:translateX(-50%);z-index:5";
+import { hookGameOver } from "../_base/ads.js";
+hookGameOver(document.getElementById("screen-finish"), "number-game", document.querySelector("#screen-finish .finish-buttons"));
 </script>
 </body>
 </html>

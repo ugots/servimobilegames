@@ -7,11 +7,12 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="stylesheet" href="../_base/promo.css">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <canvas id="field"></canvas>
+<div id="cd-controls" class="hidden"><div id="cd-stick" aria-label="Aim joystick"><div class="cd-knob"></div></div></div>
+<button id="cd-pause" class="cd-pause hidden" aria-label="Pause"><span></span><span></span></button>
 
 <div id="menu" class="screen">
   <div class="title-block">
@@ -24,7 +25,7 @@
     <button id="btn-howto" class="btn">How-to</button>
   </div>
   <p id="best-wave" class="best hidden"></p>
-  <p id="howto" class="howto hidden">Aim with the mouse or your finger. Click or hold to fire. Enemies come from every side; if they reach the wall it takes damage. Survive each wave, then spend gold in the store. Space or Esc pauses.</p>
+  <p id="howto" class="howto hidden">Desktop: aim with the mouse or arrow keys, click or Space to fire, Esc pauses. Phone: drag the joystick to aim; the cannon fires while it is pushed. Enemies come from every side; if they reach the wall it takes damage. Survive each wave, then spend gold in the store.</p>
 </div>
 
 <div id="store" class="screen hidden">
@@ -60,8 +61,8 @@
 
 <script type="module" src="game.js"></script>
 <script type="module">
-import { mountPromo } from "../_base/promo.js";
-for (const id of ["pause", "over"]) { const e = document.getElementById(id); if (e) mountPromo({ current: "castle-defense", parent: e }); }
+import { hookGameOver } from "../_base/ads.js";
+hookGameOver(document.getElementById("over"), "castle-defense", document.querySelector("#over .buttons"));
 </script>
 </body>
 </html>

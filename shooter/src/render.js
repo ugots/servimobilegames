@@ -4,8 +4,8 @@
 // World units are canvas pixels (y flipped), so the z = 0 plane maps 1:1 onto the screen.
 // Presentation effects (explode) are fed by main.js from simulation-step observations; the renderer
 // keeps them in sim coordinates in bounded pools and never touches simulation state.
-import * as THREE from "/_base/vendor/three.module.js";
-import { RoomEnvironment } from "/_base/vendor/addons/environments/RoomEnvironment.js";
+import * as THREE from "../../_base/vendor/three.module.js";
+import { RoomEnvironment } from "../../_base/vendor/addons/environments/RoomEnvironment.js";
 
 const VERT = `
 varying vec2 vP;

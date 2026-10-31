@@ -1,15 +1,15 @@
 import { createAudio } from "../../_base/audio.js";
 
 const audio = createAudio({
-  pick: "../../_base/assets/sfx/interface-sounds/click_001.ogg",
-  drop: "../../_base/assets/sfx/interface-sounds/click_002.ogg",
-  menu: "../../_base/assets/sfx/interface-sounds/click_001.ogg",
-  accept: "../../_base/assets/sfx/interface-sounds/confirmation_001.ogg",
-  reject: "../../_base/assets/sfx/interface-sounds/click_002.ogg",
-  newpot: "../../_base/assets/sfx/digital-audio/powerUp3.ogg",
-  found_mid: "../../_base/assets/sfx/interface-sounds/confirmation_002.ogg",
-  found_big: "../../_base/assets/sfx/digital-audio/powerUp2.ogg",
-  clear: "../../_base/assets/sfx/digital-audio/powerUp1.ogg",
+  pick: "../_base/assets/sfx/interface-sounds/click_001.ogg",
+  drop: "../_base/assets/sfx/interface-sounds/click_002.ogg",
+  menu: "../_base/assets/sfx/interface-sounds/click_001.ogg",
+  accept: "../_base/assets/sfx/interface-sounds/confirmation_001.ogg",
+  reject: "../_base/assets/sfx/interface-sounds/click_002.ogg",
+  newpot: "../_base/assets/sfx/digital-audio/powerUp3.ogg",
+  found_mid: "../_base/assets/sfx/interface-sounds/confirmation_002.ogg",
+  found_big: "../_base/assets/sfx/digital-audio/powerUp2.ogg",
+  clear: "../_base/assets/sfx/digital-audio/powerUp1.ogg",
 });
 
 const button = document.getElementById("lp-sound");

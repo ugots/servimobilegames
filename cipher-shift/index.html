@@ -13,30 +13,27 @@
 <body>
 <div id="cs-bg" aria-hidden="true"></div>
 <div id="cs-play" class="gk-hidden">
-<header class="cs-header">
-  <div class="cs-brand"><img class="cs-logo" src="favicon.svg" alt="Cipher Shift logo" width="36" height="36"><h1>Cipher Shift</h1></div>
-  <button id="cs-menu" class="cs-small" type="button" title="Menu (Esc)" aria-keyshortcuts="Escape">Menu</button>
-  <button id="cs-sound" class="cs-small cs-icon" type="button" aria-label="Sound on" aria-pressed="false" title="Sound on"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="cs-speaker" d="M3 9h4l5-4v14l-5-4H3z"/><path class="cs-waves" d="M16 8a6 6 0 0 1 0 8m2.5-11a10 10 0 0 1 0 14"/><path class="cs-slash" d="M4 20 20 4"/></svg></button>
-</header>
-
-<section class="cs-status">
-  <span id="cs-score" aria-live="polite">Words 0</span>
+<h1 class="cs-sr">Cipher Shift</h1>
+<header id="cs-hud" class="cs-hud">
+  <img class="cs-logo" src="favicon.svg" alt="Cipher Shift logo" width="36" height="36">
+  <span id="cs-level">Level 1</span>
+  <span id="cs-pips" class="cs-pips" role="img" aria-label="0 of 3 words this level"><span class="cs-pip"></span><span class="cs-pip"></span><span class="cs-pip"></span></span>
+  <span id="cs-score" aria-live="polite">Score 0</span>
+  <span class="cs-spacer"></span>
   <div id="cs-lives" aria-label="Lives">
     <span class="cs-seal"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" class="cs-wax"/><circle cx="20" cy="20" r="13" class="cs-wax-ring"/><text x="20" y="21" class="cs-wax-c">C</text><path class="cs-crack" d="M24 3 L19 14 L25 20 L17 27 L21 38"/></svg></span>
     <span class="cs-seal"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" class="cs-wax"/><circle cx="20" cy="20" r="13" class="cs-wax-ring"/><text x="20" y="21" class="cs-wax-c">C</text><path class="cs-crack" d="M24 3 L19 14 L25 20 L17 27 L21 38"/></svg></span>
     <span class="cs-seal"><svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="18" class="cs-wax"/><circle cx="20" cy="20" r="13" class="cs-wax-ring"/><text x="20" y="21" class="cs-wax-c">C</text><path class="cs-crack" d="M24 3 L19 14 L25 20 L17 27 L21 38"/></svg></span>
   </div>
-</section>
+</header>
+
+<nav class="cs-tools">
+  <button id="cs-menu" class="cs-small" type="button" title="Menu (Esc)" aria-keyshortcuts="Escape">Menu</button>
+  <button id="cs-sound" class="cs-small cs-icon" type="button" aria-label="Sound on" aria-pressed="false" title="Sound on"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="cs-speaker" d="M3 9h4l5-4v14l-5-4H3z"/><path class="cs-waves" d="M16 8a6 6 0 0 1 0 8m2.5-11a10 10 0 0 1 0 14"/><path class="cs-slash" d="M4 20 20 4"/></svg></button>
+</nav>
 
 <main class="cs-stage"><svg id="cs-dial" role="img" aria-label="Cryptex with letter rings"></svg></main>
-
-<div class="cs-controls">
-  <button id="cs-up1" class="cs-turn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 16l7-7 7 7"/></svg><span>Up 1</span></button>
-  <button id="cs-up2" class="cs-turn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12l7-7 7 7M5 20l7-7 7 7"/></svg><span>Up 2</span></button>
-  <button id="cs-down1" class="cs-turn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8l7 7 7-7"/></svg><span>Down 1</span></button>
-  <button id="cs-down2" class="cs-turn" type="button"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4l7 7 7-7M5 12l7 7 7-7"/></svg><span>Down 2</span></button>
-</div>
-<p class="cs-hint">Up/Down turn 1 &middot; Shift+Up/Down turn 2</p>
+<div id="cs-banner" class="cs-banner gk-hidden" role="status" aria-live="polite"><h2 id="cs-banner-text">Level 2</h2></div>
 </div>
 
 <div id="cs-card" class="cs-card-wrap gk-hidden" role="dialog" aria-modal="true" aria-labelledby="cs-card-title">

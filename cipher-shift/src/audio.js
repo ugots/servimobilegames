@@ -2,7 +2,7 @@ import { createAudio } from "../../_base/audio.js";
 
 // Six sounds, one shared mute (D-037). interface-sounds/error_004.ogg is not in the shared kit,
 // so "life" uses digital-audio/lowRandom.ogg (nearest low error tone).
-const SFX = "../../_base/assets/sfx/";
+const SFX = "../_base/assets/sfx/";
 const audio = createAudio({
   click: SFX + "interface-sounds/click_002.ogg",
   lock: SFX + "interface-sounds/confirmation_001.ogg",

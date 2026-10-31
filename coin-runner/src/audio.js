@@ -1,6 +1,6 @@
 // Sound: vendored Kenney CC0 samples (Games/_base/assets/sfx) with Web Audio synth fallback.
 
-const SFX_BASE = "/_base/assets/sfx/";
+const SFX_BASE = "../_base/assets/sfx/";
 const SAMPLES = {
   coin: SFX_BASE + "casino-audio/chips-collide-1.ogg",
   hitSoft: SFX_BASE + "impact-sounds/impactSoft_medium_000.ogg",

@@ -8,7 +8,7 @@
 // trails, and four distinct power-up pickups. Everything is built at init or
 // on spawn; per-frame code only writes numbers into preallocated buffers.
 
-import { createScene, setSkyGradient } from "/_base/render.js";
+import { createScene, setSkyGradient } from "../../_base/render.js";
 import { MAX_BULLETS } from "./entities.js";
 import { bulletPoint, bulletFade, TRAIL_SPAN, FIRE_WARN } from "./difficulty.js";
 

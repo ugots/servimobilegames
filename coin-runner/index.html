@@ -7,7 +7,7 @@
 <link rel="icon" type="image/svg+xml" href="favicon.svg" />
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
 <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-<link rel="stylesheet" href="/_base/menu.css" />
+<link rel="stylesheet" href="../_base/menu.css" />
 <link rel="stylesheet" href="../_base/promo.css" />
 <link rel="stylesheet" href="styles.css" />
 </head>
@@ -131,11 +131,13 @@
     </div>
   </div>
 
-  <script type="importmap">{"imports":{"three":"/_base/vendor/three.module.js","three/addons/":"/_base/vendor/addons/"}}</script>
+  <script type="importmap">{"imports":{"three":"../_base/vendor/three.module.js","three/addons/":"../_base/vendor/addons/"}}</script>
   <script type="module" src="src/main.js"></script>
 <script type="module">
 import { mountPromo } from "../_base/promo.js";
 for (const id of ["pauseScreen", "gameOver"]) { const e = document.getElementById(id); if (e) mountPromo({ current: "coin-runner", parent: e }); }
+import { hookGameOver } from "../_base/ads.js";
+hookGameOver(document.getElementById("gameOver"), "coin-runner", document.querySelector("#gameOver .gk-buttons"));
 </script>
 </body>
 </html>

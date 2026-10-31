@@ -1,5 +1,5 @@
-import { mountMenu } from "/_base/menu.js";
-import { mountHud } from "/_base/hud.js";
+import { mountMenu } from "../../_base/menu.js";
+import { mountHud } from "../../_base/hud.js";
 import { createRenderer } from "./render.js";
 import { mountTitleSky } from "./title_sky.js";
 

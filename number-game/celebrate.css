@@ -1,0 +1,6 @@
+.cb-node { position: absolute; pointer-events: none; will-change: transform, opacity; }
+
+body.cb-rainbow-glow #bg-layer .bg-rainbow { filter: brightness(1.3) saturate(1.5); }
+#bg-layer .bg-rainbow { transition: filter 250ms ease-out; }
+
+.finish-rainbow { display: none !important; }

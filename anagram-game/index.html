@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Anagram Adventure</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="assets/art.css">
+<link rel="stylesheet" href="../_base/menu.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="an-bg" class="lp-bg" aria-hidden="true"></div>
+<div id="playArea" class="gk-hidden">
+<header class="app-header">
+  <div class="an-brand"><img class="logo" src="favicon.svg" alt="Anagram Adventure logo"><h1>Anagram Adventure</h1></div>
+  <button id="an-menu" type="button" title="Menu (Esc)" aria-keyshortcuts="Escape">Menu</button>
+  <button id="an-sound" type="button" aria-label="Sound on" aria-pressed="false" title="Sound on"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="lp-speaker" d="M3 9h4l5-4v14l-5-4H3z"/><path class="lp-waves" d="M16 8a6 6 0 0 1 0 8m2.5-11a10 10 0 0 1 0 14"/><path class="lp-slash" d="M4 20 20 4"/></svg></button>
+</header>
+
+<div class="an-stage">
+  <div class="an-col">
+    <div id="an-hud" class="an-hud">
+      <span id="an-level" class="an-hud-item">Level 1</span>
+      <span id="an-score" class="an-hud-item">Score 0</span>
+      <span id="an-best" class="an-hud-item an-hud-quiet">Best 0</span>
+      <span id="an-lives" class="an-lives" role="img" aria-label="3 lives left">
+        <svg class="an-heart" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="6" class="an-heart-tile"/><path class="an-heart-shape" d="M16 25.5C7 19 5.5 14.5 5.5 11.5A5.3 5.3 0 0 1 16 9.6a5.3 5.3 0 0 1 10.5 1.9c0 3-1.500 7.500-10.500 14z"/></svg>
+        <svg class="an-heart" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="6" class="an-heart-tile"/><path class="an-heart-shape" d="M16 25.5C7 19 5.5 14.5 5.5 11.5A5.3 5.3 0 0 1 16 9.6a5.3 5.3 0 0 1 10.5 1.9c0 3-1.500 7.500-10.500 14z"/></svg>
+        <svg class="an-heart" viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="6" class="an-heart-tile"/><path class="an-heart-shape" d="M16 25.5C7 19 5.5 14.5 5.5 11.5A5.3 5.3 0 0 1 16 9.6a5.3 5.3 0 0 1 10.5 1.9c0 3-1.500 7.500-10.500 14z"/></svg>
+      </span>
+    </div>
+    <main id="an-board" class="lp-table an-board" data-len="4">
+      <div id="an-tray" class="an-grid an-tray" aria-label="Your word"></div>
+      <div id="an-bank" class="an-grid an-bank" aria-label="Scrambled letters"></div>
+    </main>
+    <div class="an-actions">
+      <button id="an-clear" class="an-btn" type="button">Clear</button>
+      <button id="an-giveup" class="an-btn" type="button">Give Up</button>
+    </div>
+    <p class="an-hint">Type letters · Backspace undoes</p>
+  </div>
+</div>
+</div>
+
+<div id="an-burst" class="an-burst" aria-hidden="true"></div>
+<div id="an-banner" class="an-banner" role="status" aria-live="polite" hidden></div>
+
+<div id="an-runover" class="an-overlay gk-hidden" role="dialog" aria-modal="true" aria-labelledby="an-ro-title">
+  <div class="an-card lp-table">
+    <h2 id="an-ro-title">Run over</h2>
+    <p id="an-ro-level">Level reached 1</p>
+    <p id="an-ro-score">Score 0</p>
+    <p id="an-ro-best">Best 0</p>
+    <button id="an-again" class="an-btn an-btn-brass" type="button">Play again</button>
+  </div>
+</div>
+
+<script src="src/enable-words.js"></script>
+<script src="src/targets.js"></script>
+<script src="src/levels.js"></script>
+<script src="src/game.js"></script>
+<script type="module" src="src/audio.js"></script>
+<script type="module" src="src/menu-glue.js"></script>
+</body>
+</html>

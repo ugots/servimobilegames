@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Number Game — art contact sheet (N0)</title>
+<style>
+  :root { --tile: 240px; }
+  @media (max-width: 600px) {
+    :root { --tile: 96px; }
+  }
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: linear-gradient(135deg, #FFE3F3, #E9DBFF);
+    font-family: system-ui, sans-serif;
+  }
+  h1 {
+    text-align: center;
+    color: #4A2C6B;
+    padding-top: 24px;
+  }
+  .grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 24px;
+  }
+  .tile {
+    width: var(--tile);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255,255,255,0.5);
+    border-radius: 16px;
+    padding: 10px;
+  }
+  .tile img {
+    width: 100%;
+    height: calc(var(--tile) * 0.8);
+    object-fit: contain;
+  }
+  .tile figcaption {
+    margin-top: 6px;
+    font-size: 12px;
+    color: #4A2C6B;
+    text-align: center;
+    word-break: break-all;
+  }
+</style>
+</head>
+<body>
+<h1>Number Game — art contact sheet (N0)</h1>
+<div class="grid">
+  <figure class="tile"><img src="svg/rainbow.svg" alt="rainbow"><figcaption>rainbow.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/dino-purple.svg" alt="dino-purple"><figcaption>dino-purple.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/dino-pink.svg" alt="dino-pink"><figcaption>dino-pink.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/dino-mint.svg" alt="dino-mint"><figcaption>dino-mint.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/dino-purple-cheer.svg" alt="dino-purple-cheer"><figcaption>dino-purple-cheer.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/dino-purple-encourage.svg" alt="dino-purple-encourage"><figcaption>dino-purple-encourage.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/cloud-a.svg" alt="cloud-a"><figcaption>cloud-a.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/cloud-b.svg" alt="cloud-b"><figcaption>cloud-b.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/flower-pink.svg" alt="flower-pink"><figcaption>flower-pink.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/flower-purple.svg" alt="flower-purple"><figcaption>flower-purple.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/flower-tulip.svg" alt="flower-tulip"><figcaption>flower-tulip.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/star.svg" alt="star"><figcaption>star.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/sparkle.svg" alt="sparkle"><figcaption>sparkle.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/heart.svg" alt="heart"><figcaption>heart.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/burst.svg" alt="burst"><figcaption>burst.svg</figcaption></figure>
+  <figure class="tile"><img src="svg/hills.svg" alt="hills"><figcaption>hills.svg</figcaption></figure>
+</div>
+</body>
+</html>

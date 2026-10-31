@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<title>Castle Defense</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="stylesheet" href="../_base/promo.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="field"></canvas>
+
+<div id="menu" class="screen">
+  <div class="title-block">
+    <img class="logo-mark" src="favicon.svg" alt="">
+    <h1>Castle Defense</h1>
+    <p class="tagline">Hold the wall. Survive the waves.</p>
+  </div>
+  <div class="buttons">
+    <button id="btn-play" class="btn primary">Play</button>
+    <button id="btn-howto" class="btn">How-to</button>
+  </div>
+  <p id="best-wave" class="best hidden"></p>
+  <p id="howto" class="howto hidden">Aim with the mouse or your finger. Click or hold to fire. Enemies come from every side; if they reach the wall it takes damage. Survive each wave, then spend gold in the store. Space or Esc pauses.</p>
+</div>
+
+<div id="store" class="screen hidden">
+  <div class="panel">
+    <h2>Store</h2>
+    <div id="store-gold" class="gold-line"></div>
+    <div id="store-items" class="buttons"></div>
+    <button id="btn-next" class="btn primary">Next Wave</button>
+  </div>
+</div>
+
+<div id="pause" class="screen hidden">
+  <div class="panel">
+    <h2>Paused</h2>
+    <div class="buttons">
+      <button id="btn-resume" class="btn primary">Resume</button>
+      <button id="btn-pause-exit" class="btn">Exit to menu</button>
+    </div>
+  </div>
+</div>
+
+<div id="over" class="screen hidden">
+  <div class="panel">
+    <h2>Game Over</h2>
+    <div id="over-line" class="gold-line"></div>
+    <p id="over-best" class="best hidden"></p>
+    <div class="buttons">
+      <button id="btn-restart" class="btn primary">Restart</button>
+      <button id="btn-exit" class="btn">Exit to menu</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="game.js"></script>
+<script type="module">
+import { mountPromo } from "../_base/promo.js";
+for (const id of ["pause", "over"]) { const e = document.getElementById(id); if (e) mountPromo({ current: "castle-defense", parent: e }); }
+</script>
+</body>
+</html>

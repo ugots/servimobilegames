@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ServiMobileGames</title>
+<meta name="description" content="Free games for phone and desktop from ServiMobileGames. Play in your browser or get them on Google Play.">
+<meta property="og:title" content="ServiMobileGames">
+<meta property="og:description" content="Free games for phone and desktop.">
+<meta property="og:type" content="website">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<style>
+:root{--bg:#f5f6fb;--fg:#1c2233;--card:#fff;--mute:#5b6478;--acc:#2b3a67;--line:#dde1ee}
+@media(prefers-color-scheme:dark){:root{--bg:#12151f;--fg:#e8ebf5;--card:#1b2030;--mute:#9aa3b8;--acc:#8fa4ff;--line:#2a3148}}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg)}
+header{text-align:center;padding:40px 16px 16px}
+header img{width:56px;height:56px}
+h1{margin:8px 0 4px;font-size:1.9rem}
+header p{margin:0;color:var(--mute)}
+main{max-width:1400px;margin:0 auto;padding:16px}
+#grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:640px){#grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){#grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1500px){#grid{grid-template-columns:repeat(4,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.card img{width:64px;height:64px;border-radius:12px}
+.card h2{margin:4px 0 0;font-size:1.2rem}
+.card p{margin:0;color:var(--mute);flex:1}
+.acts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:8px}
+.btn{background:var(--acc);color:var(--bg);padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
+.gp{display:inline-flex;min-height:44px;align-items:center;text-decoration:none}
+footer{text-align:center;padding:32px 16px;color:var(--mute)}
+footer a{color:var(--acc)}
+</style></head><body>
+<header><img src="favicon.svg" alt=""><h1>ServiMobileGames</h1><p>Free games for phone and desktop</p></header>
+<main><div id="grid">
+@@CARDS@@</div></main>
+<footer><a id="dev" href="https://play.google.com/store/apps/dev?id=PLACEHOLDER_DEV_ID">Made by ServiMobileGames</a></footer>
+<script>
+(function () {
+  var badge = '<svg xmlns="http://www.w3.org/2000/svg" width="135" height="40" viewBox="0 0 135 40" role="img" aria-label="Get it on Google Play"><rect width="135" height="40" rx="6" fill="#000" stroke="#a6a6a6"/><path d="M12 8l14 12-14 12z" fill="#34a853"/><path d="M12 8l10 8.5L26 20z" fill="#4285f4"/><path d="M12 32l10-8.5L26 20z" fill="#ea4335"/><path d="M26 20l5-3 4 3-4 3z" fill="#fbbc04"/><text x="42" y="16" fill="#fff" font-family="Arial,sans-serif" font-size="8">GET IT ON</text><text x="42" y="31" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="bold">Google Play</text></svg>';
+  var MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" };
+  function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return MAP[c]; }); }
+  fetch("games.json").then(function (r) { if (!r.ok) throw new Error("bad"); return r.json(); }).then(function (d) {
+    document.getElementById("dev").href = d.playDeveloper;
+    document.getElementById("grid").innerHTML = d.games.map(function (g) {
+      return '<div class="card"><img src="' + esc(g.icon) + '" alt="" width="64" height="64"><h2>' + esc(g.title) +
+        '</h2><p>' + esc(g.tagline) + '</p><div class="acts"><a class="btn" href="./' + esc(g.slug) +
+        '/">Play in browser</a><a class="gp" href="' + esc(g.play) + '">' + badge + '</a></div></div>';
+    }).join("");
+  }).catch(function () {});
+})();
+</script></body></html>

@@ -1,0 +1,261 @@
+@import url("promo.css");
+/* Shared menu/HUD/pause/game-over chrome kit. Palette copied verbatim from
+   Games\coin-runner\styles.css (warm, restrained app palette). Do not
+   invent new colors here; if a game needs one, add it to coin-runner
+   first and copy it down. */
+:root {
+  --gk-ink: #2a2118;
+  --gk-ink-soft: #6b5c4c;
+  --gk-canvas-warm: #f4ece0;
+  --gk-surface: #fffaf3;
+  --gk-surface-border: #e4d5c0;
+  --gk-accent: #b5652f;
+  --gk-accent-strong: #8a4520;
+  --gk-good: #3f7d4f;
+  --gk-bad: #b3402d;
+  --gk-shadow: rgba(42, 33, 24, 0.18);
+}
+
+.gk-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 32px;
+  text-align: center;
+  font-family: "Georgia", "Iowan Old Style", serif;
+  color: var(--gk-ink);
+  background: radial-gradient(ellipse at 50% 20%, #fdf5ea 0%, var(--gk-canvas-warm) 70%);
+}
+
+.gk-overlay {
+  background: rgba(20, 16, 12, 0.55);
+  backdrop-filter: blur(2px);
+  color: var(--gk-ink);
+}
+
+.gk-hidden { display: none !important; }
+
+.gk-title {
+  font-size: clamp(2.2rem, 7vw, 4.2rem);
+  margin: 0;
+  letter-spacing: 0.5px;
+  color: var(--gk-accent-strong);
+  text-shadow: 0 2px 0 rgba(255, 255, 255, 0.6);
+}
+
+.gk-title-sm {
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  margin: 0;
+  color: var(--gk-accent-strong);
+}
+
+.gk-subtitle {
+  margin: 0;
+  color: var(--gk-ink-soft);
+  font-size: clamp(0.95rem, 2.4vw, 1.15rem);
+  max-width: 36ch;
+}
+
+.gk-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: min(320px, 80vw);
+}
+
+.gk-btn {
+  font-family: "Georgia", serif;
+  font-size: 1.05rem;
+  padding: 14px 20px;
+  border-radius: 10px;
+  border: 1px solid var(--gk-surface-border);
+  background: var(--gk-surface);
+  color: var(--gk-ink);
+  cursor: pointer;
+  box-shadow: 0 2px 6px var(--gk-shadow);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+}
+.gk-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px var(--gk-shadow); }
+.gk-btn:active { transform: translateY(0); box-shadow: 0 1px 3px var(--gk-shadow); }
+
+.gk-btn-primary {
+  background: var(--gk-accent);
+  color: #fff8ef;
+  border-color: var(--gk-accent-strong);
+  font-weight: bold;
+}
+
+.gk-btn-quiet {
+  background: transparent;
+  color: var(--gk-ink-soft);
+  box-shadow: none;
+  border-color: transparent;
+}
+
+.gk-exit-link {
+  color: var(--gk-ink-soft);
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: 0.9rem;
+  background: none;
+  border: none;
+}
+
+.gk-score-line {
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  color: var(--gk-accent-strong);
+  font-weight: bold;
+}
+
+/* HUD bar: D-040 desktop scale — score ~48px/labels ~24px @1920x1080,
+   64/32 @2560x1440. clamp() picked so 1920w -> ~48px and 2560w -> ~64px. */
+.gk-hud {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 8000;
+  display: flex;
+  justify-content: center;
+  gap: clamp(16px, 2vw, 40px);
+  padding: clamp(8px, 1.2vw, 18px) clamp(12px, 2vw, 28px);
+  font-family: "Georgia", "Iowan Old Style", serif;
+  pointer-events: none;
+}
+
+.gk-hud-field {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--gk-accent-strong);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.gk-hud-label {
+  font-size: clamp(14px, 1.11vw, 32px);
+  color: var(--gk-ink-soft);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.gk-hud-value {
+  font-size: clamp(24px, 2.22vw, 64px);
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Mobile (portrait, e.g. Pixel 9 412x915) laid out separately, not scaled
+   down from desktop. */
+@media (max-width: 600px), (orientation: portrait) {
+  .gk-hud {
+    gap: 14px;
+    padding: 10px 12px;
+  }
+  .gk-hud-label { font-size: 12px; }
+  .gk-hud-value { font-size: 22px; }
+  .gk-buttons { width: min(280px, 86vw); }
+}
+
+/* 3D scene screens (opt-in: .gk-scene / .gk-panel) */
+.gk-screen.gk-scene {
+  background: radial-gradient(ellipse at 65% 50%, rgba(8,10,16,0) 0%, rgba(8,10,16,0.35) 55%, rgba(8,10,16,0.7) 100%);
+  align-items: flex-start;
+  justify-content: center;
+  padding: 24px 24px 24px 4vw;
+}
+
+.gk-panel {
+  width: clamp(420px, 32vw, 1100px);
+  max-height: calc(100% - 48px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: clamp(14px, 1vw, 28px);
+  padding: clamp(24px, 1.8vw, 56px);
+  background: rgba(14,18,26,0.72);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,236,210,0.16);
+  border-radius: 18px;
+  box-shadow: 0 18px 60px rgba(0,0,0,0.45);
+  color: #f4ece0;
+}
+
+.gk-panel .gk-title {
+  font-size: clamp(3rem, 4.2vw, 9rem);
+  color: #ffd27a;
+  text-shadow: 0 2px 18px rgba(244,197,66,0.35);
+}
+
+.gk-panel .gk-title-sm {
+  font-size: clamp(2.4rem, 3vw, 6rem);
+  color: #ffd27a;
+}
+
+.gk-panel .gk-subtitle {
+  font-size: clamp(1.1rem, 1.2vw, 2.2rem);
+  color: rgba(244,236,224,0.82);
+  max-width: 30ch;
+}
+
+.gk-panel .gk-buttons {
+  width: 100%;
+  gap: clamp(12px, 0.9vw, 20px);
+}
+
+.gk-panel .gk-btn {
+  font-size: clamp(1.2rem, 1.25vw, 2.4rem);
+  padding: clamp(14px, 1vw, 24px) 20px;
+  text-align: center;
+  background: rgba(255,250,243,0.08);
+  color: #f4ece0;
+  border: 1px solid rgba(255,236,210,0.28);
+  box-shadow: none;
+}
+.gk-panel .gk-btn:hover { background: rgba(255,250,243,0.16); }
+
+.gk-panel .gk-btn-primary {
+  background: #b5652f;
+  color: #fff8ef;
+  border-color: #8a4520;
+  box-shadow: 0 4px 18px rgba(181,101,47,0.45);
+}
+
+.gk-panel .gk-btn-quiet {
+  background: transparent;
+  border-color: transparent;
+  color: rgba(244,236,224,0.7);
+}
+
+.gk-panel .gk-hint {
+  margin: 0;
+  font-size: clamp(0.95rem, 0.95vw, 1.8rem);
+  color: rgba(244,236,224,0.7);
+}
+
+@media (max-width: 700px) {
+  .gk-screen.gk-scene {
+    align-items: stretch;
+    justify-content: flex-end;
+    padding: 12px 12px calc(12px + env(safe-area-inset-bottom));
+  }
+  .gk-panel {
+    width: auto;
+    max-height: calc(100% - 24px);
+    align-items: center;
+    text-align: center;
+    gap: 12px;
+    padding: 20px 18px;
+  }
+  .gk-panel .gk-title { font-size: 2.6rem; }
+  .gk-panel .gk-title-sm { font-size: 2.2rem; }
+  .gk-panel .gk-subtitle { font-size: 1rem; }
+  .gk-panel .gk-btn { font-size: 1.1rem; padding: 14px 20px; }
+  .gk-panel .gk-hint { font-size: 0.9rem; }
+}

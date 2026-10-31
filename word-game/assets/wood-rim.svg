@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 64">
+  <defs>
+    <filter id="wood-noise" x="0%" y="0%" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.004 0.12" stitchTiles="stitch" numOctaves="2" result="n"/>
+      <feColorMatrix in="n" type="saturate" values="0"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.35"/></feComponentTransfer>
+    </filter>
+  </defs>
+  <rect x="0" y="0" width="512" height="64" fill="#6b4226"/>
+  <path d="M0 5h512M0 53h512" stroke="#d0a969" stroke-opacity=".6" stroke-width="3"/>
+  <path d="M0 15c90-9 140 14 240 1s178-3 272-8M0 38c81-11 148 9 246-2s173 7 266-2" fill="none" stroke="#2c180f" stroke-opacity=".25" stroke-width="3"/>
+  <rect x="0" y="0" width="512" height="64" fill="#000" filter="url(#wood-noise)" opacity=".35"/>
+</svg>

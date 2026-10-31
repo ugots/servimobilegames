@@ -1,0 +1,89 @@
+:root {
+  --lp-room: #14231e;
+  --lp-felt: #1f4a3d;
+  --lp-felt-hi: #2d6b56;
+  --lp-felt-lo: #143128;
+  --lp-wood: #6b4226;
+  --lp-wood-hi: #8a5a36;
+  --lp-wood-lo: #3f2616;
+  --lp-tile: #f3e6c8;
+  --lp-tile-hi: #fffaf0;
+  --lp-edge: #c9a878;
+  --lp-edge-lo: #9c7a4f;
+  --lp-ink: #2a2118;
+  --lp-brass: #c8963e;
+  --lp-brass-hi: #e6bf6e;
+}
+
+.lp-tile {
+  background: #f3e6c8 url(tile-face.svg) center/cover;
+  border-radius: 10%;
+  box-shadow:
+    inset 2px 2px 0 rgba(255,255,255,.68),
+    inset -1px -1px 0 rgba(125,84,46,.25),
+    2px 3px 0 var(--lp-edge),
+    2px 5px 0 var(--lp-edge-lo),
+    2px 8px 9px rgba(0,0,0,.42);
+  color: var(--lp-ink);
+  font: bold 1em Georgia, serif;
+  transition: transform 120ms ease-out, box-shadow 120ms ease-out, filter 120ms ease-out;
+}
+
+.lp-tile:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.7),
+    2px 3px 0 var(--lp-edge),
+    2px 5px 0 var(--lp-edge-lo),
+    2px 12px 15px rgba(0,0,0,.40);
+}
+
+.lp-tile:active {
+  transform: translateY(2px);
+  box-shadow:
+    inset 0 2px 0 rgba(255,255,255,.7),
+    1px 1px 0 var(--lp-edge),
+    1px 2px 0 var(--lp-edge-lo),
+    1px 4px 5px rgba(0,0,0,.42);
+}
+
+.lp-table {
+  background:
+    radial-gradient(ellipse at 23% 4%, rgba(255,240,200,.24), transparent 62%),
+    linear-gradient(120deg, rgba(7,20,15,.04), rgba(6,16,12,.28)),
+    url(felt.svg);
+  border: 12px solid #6b4226;
+  border-image: url(wood-rim.svg) 18 stretch;
+  border-radius: 18px;
+  box-shadow:
+    inset 0 0 0 2px rgba(230,191,110,.28),
+    inset 0 0 85px rgba(0,0,0,.43),
+    0 14px 0 #3f2616,
+    0 24px 40px rgba(0,0,0,.5);
+}
+
+.lp-bg {
+  background-color: var(--lp-room);
+  background-image: url(bg-motif.svg);
+  animation: lp-drift 90s linear infinite;
+}
+
+@keyframes lp-drift {
+  from { background-position: 0 0; }
+  to { background-position: 240px 240px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lp-bg { animation: none; }
+}
+
+.lp-chip {
+  background: linear-gradient(180deg, var(--lp-brass-hi), var(--lp-brass));
+  color: var(--lp-ink);
+  border-radius: 999px;
+  padding: .3em .9em;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.5),
+    0 2px 0 var(--lp-wood-lo);
+  font: bold 1em Georgia, serif;
+}

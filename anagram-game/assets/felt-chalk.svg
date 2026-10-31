@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <!-- Faint chalk marks for the card-table felt (D-045). Hand-drawn paths, no font text.
+       Drawn at full stroke here; styles.css lays this over felt.svg at opacity 0.08, so no mark exceeds 0.12.
+       Marks hug the corners and top and bottom edges; the middle band behind tray and bank stays clear. -->
+  <defs>
+    <g id="cA"><path d="M2 30L12 2L22 30M6 20L18 19"/></g>
+    <g id="cE"><path d="M20 3Q8 1 4 4L3 28Q12 31 20 29M4 16L15 15"/></g>
+    <g id="cT"><path d="M2 4Q12 2 22 3M12 3L11 30"/></g>
+    <g id="cO"><path d="M12 3C2 4 2 28 12 29C22 28 22 5 12 3"/></g>
+    <g id="cR"><path d="M4 30L4 3Q20 1 19 12Q17 18 4 17M10 18L20 30"/></g>
+    <g id="cN"><path d="M3 30L3 3L21 29L21 3"/></g>
+    <g id="cS"><path d="M20 6Q8 0 5 9Q6 16 14 17Q22 20 18 28Q10 33 3 26"/></g>
+    <g id="cL"><path d="M4 3L3 29Q12 31 21 28"/></g>
+    <g id="cG"><path d="M20 7Q10 0 4 10Q2 24 12 29Q21 29 21 18L13 18"/></g>
+    <g id="cM"><path d="M3 30L4 3L12 18L20 3L21 30"/></g>
+    <g id="cD"><path d="M4 3L4 29Q22 28 21 14Q19 3 4 3"/></g>
+    <g id="cW"><path d="M2 3L7 29L12 12L17 29L22 3"/></g>
+    <g id="cI"><path d="M12 3L12 29M7 3L17 3M7 29L17 29"/></g>
+    <g id="w1"><path d="M0 18Q4 2 8 18T16 16Q20 4 24 18T32 17Q36 5 40 18T48 16M20 4L20 22M33 3L33 22"/></g>
+    <g id="w2"><path d="M0 16Q5 4 9 17T18 15Q22 2 27 16T36 17M13 5L13 20"/></g>
+    <g id="w3"><path d="M0 17Q4 3 8 16Q12 28 15 14T24 16Q28 4 32 17T41 15Q44 8 46 17"/></g>
+  </defs>
+  <g fill="none" stroke="#f4efe2" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- top edge -->
+    <use href="#cA" transform="translate(205 120) rotate(-6)"/>
+    <use href="#w1" transform="translate(245 124) rotate(-2)"/>
+    <path d="M239 140Q265 128 296 116"/>
+    <use href="#cN" transform="translate(318 114) rotate(5)"/>
+    <use href="#cT" transform="translate(372 122) rotate(-4)"/>
+    <use href="#cE" transform="translate(418 116) rotate(3)"/>
+    <use href="#w2" transform="translate(462 122) rotate(2)"/>
+    <path d="M458 136Q480 130 506 124"/>
+    <use href="#cM" transform="translate(548 118) rotate(-5)"/>
+    <use href="#cO" transform="translate(582 128) rotate(7)"/>
+    <!-- bottom-left corner -->
+    <use href="#w3" transform="translate(205 452) rotate(-3)"/>
+    <path d="M199 470Q225 460 258 446"/>
+    <use href="#cG" transform="translate(272 448) rotate(-5)"/>
+    <use href="#cR" transform="translate(310 456) rotate(4)"/>
+    <use href="#cS" transform="translate(344 446) rotate(-7)"/>
+    <use href="#cL" transform="translate(206 484) rotate(6)"/>
+    <use href="#cD" transform="translate(244 488) rotate(-3)"/>
+    <!-- bottom-right corner: tally scoreboard, two groups of five -->
+    <path d="M470 448L472 482M486 447L487 483M502 449L503 481M518 448L520 482M458 474Q490 462 530 456"/>
+    <path d="M548 449L549 483M563 448L565 482M578 450L578 481M593 447L595 483M538 474Q570 463 604 457"/>
+    <!-- a few loose letters near the side edges -->
+    <use href="#cW" transform="translate(196 300) rotate(-8) scale(.8)"/>
+    <use href="#cI" transform="translate(582 292) rotate(6) scale(.8)"/>
+    <use href="#cA" transform="translate(600 205) rotate(-4) scale(.7)"/>
+  </g>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 200" preserveAspectRatio="none">
+  <!-- Left end cap of the cryptex: conical tip at the left, engraved flange at the right. Hand drawn, own work, CC0. -->
+  <defs>
+    <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6b4a1c"/>
+      <stop offset="0.3" stop-color="#e2b867"/>
+      <stop offset="0.55" stop-color="#b98a3a"/>
+      <stop offset="0.8" stop-color="#8a6224"/>
+      <stop offset="1" stop-color="#4a3112"/>
+    </linearGradient>
+    <linearGradient id="sheen" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#fff2c8" stop-opacity="0.35"/>
+      <stop offset="0.5" stop-color="#fff2c8" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.25"/>
+    </linearGradient>
+  </defs>
+  <path d="M2 88 Q0 100 2 112 L46 198 Q47 200 50 200 H98 Q100 200 100 198 V2 Q100 0 98 0 H50 Q47 0 46 2 Z" fill="url(#brass)"/>
+  <path d="M2 88 Q0 100 2 112 L46 198 Q47 200 50 200 H98 Q100 200 100 198 V2 Q100 0 98 0 H50 Q47 0 46 2 Z" fill="url(#sheen)"/>
+  <g fill="none" stroke="#3a2810" stroke-width="1.6" stroke-linecap="round">
+    <path d="M6 92 L47 14"/><path d="M6 108 L47 186"/>
+    <path d="M14 96 L47 34" opacity="0.7"/><path d="M14 104 L47 166" opacity="0.7"/>
+    <path d="M52 22 q8 -9 16 0 t16 0"/><path d="M52 44 q8 -9 16 0 t16 0"/>
+    <path d="M52 66 q8 -9 16 0 t16 0"/><path d="M52 88 q8 -9 16 0 t16 0"/>
+    <path d="M52 110 q8 -9 16 0 t16 0"/><path d="M52 132 q8 -9 16 0 t16 0"/>
+    <path d="M52 154 q8 -9 16 0 t16 0"/><path d="M52 176 q8 -9 16 0 t16 0"/>
+    <circle cx="76" cy="100" r="5"/><circle cx="76" cy="100" r="2"/>
+  </g>
+  <g fill="none" stroke="#f6dc9c" stroke-width="0.8" opacity="0.6">
+    <path d="M52 23 q8 -9 16 0 t16 0"/><path d="M52 67 q8 -9 16 0 t16 0"/>
+    <path d="M52 111 q8 -9 16 0 t16 0"/><path d="M52 155 q8 -9 16 0 t16 0"/>
+  </g>
+  <rect x="45" y="0" width="3" height="200" fill="#2a1d0e" opacity="0.8"/>
+  <rect x="94" y="0" width="6" height="200" fill="#2a1d0e" opacity="0.9"/>
+  <rect x="48" y="0" width="1.2" height="200" fill="#f0d28a" opacity="0.45"/>
+</svg>

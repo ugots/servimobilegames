@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 100" preserveAspectRatio="none">
+  <!-- Engraved brass collar band with a scroll border. Hand drawn, own work, CC0. -->
+  <defs>
+    <linearGradient id="brass" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#5e4017"/>
+      <stop offset="0.3" stop-color="#e2b867"/>
+      <stop offset="0.6" stop-color="#b98a3a"/>
+      <stop offset="1" stop-color="#4a3112"/>
+    </linearGradient>
+  </defs>
+  <rect width="200" height="100" fill="url(#brass)"/>
+  <g fill="none" stroke="#3a2810" stroke-width="1.4" stroke-linecap="round">
+    <path d="M0 24 q10 -10 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/>
+    <path d="M0 76 q10 10 20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0 t20 0"/>
+    <path d="M0 38 H200"/><path d="M0 62 H200"/>
+    <circle cx="20" cy="50" r="6"/><circle cx="60" cy="50" r="6"/><circle cx="100" cy="50" r="6"/><circle cx="140" cy="50" r="6"/><circle cx="180" cy="50" r="6"/>
+    <path d="M26 50 q7 -9 14 0 q7 9 14 0"/><path d="M66 50 q7 -9 14 0 q7 9 14 0"/><path d="M106 50 q7 -9 14 0 q7 9 14 0"/><path d="M146 50 q7 -9 14 0 q7 9 14 0"/>
+  </g>
+  <g fill="none" stroke="#f6dc9c" stroke-width="0.7" opacity="0.55">
+    <path d="M0 39.2 H200"/><path d="M0 63.2 H200"/>
+  </g>
+</svg>

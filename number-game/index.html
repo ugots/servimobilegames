@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Number Fun">
+<title>Number Fun</title>
+<script>(function(){var d=document.documentElement;function f(){var w=innerWidth,h=innerHeight,t=(navigator.maxTouchPoints||0)>0||matchMedia('(pointer: coarse)').matches;d.classList.toggle('ipad',t&&Math.min(w,h)>=650&&Math.max(w,h)<=1400);}f();addEventListener('resize',f);addEventListener('orientationchange',f);})();</script>
+<link rel="icon" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="scene.css">
+<link rel="stylesheet" href="hop.css">
+</head>
+<body>
+<div id="bg-layer" aria-hidden="true">
+  <div class="bg-sky-a"></div>
+  <div class="bg-sky-b"></div>
+  <div class="bg-glow"></div>
+  <img class="bg-rainbow" src="assets/svg/rainbow.svg" alt="">
+  <div class="bg-rainbow-fx">
+    <div class="bg-rainbow-shine"></div>
+    <img class="bg-glint" src="assets/svg/sparkle.svg" alt="">
+    <img class="bg-glint" src="assets/svg/sparkle.svg" alt="">
+    <img class="bg-glint" src="assets/svg/sparkle.svg" alt="">
+    <img class="bg-glint" src="assets/svg/sparkle.svg" alt="">
+    <img class="bg-glint" src="assets/svg/sparkle.svg" alt="">
+  </div>
+  <img class="bg-cloud bg-cloud-a1" src="assets/svg/cloud-a.svg" alt="">
+  <img class="bg-cloud bg-cloud-b1" src="assets/svg/cloud-b.svg" alt="">
+  <img class="bg-cloud bg-cloud-a2" src="assets/svg/cloud-a.svg" alt="">
+  <img class="bg-cloud bg-cloud-b2" src="assets/svg/cloud-b.svg" alt="">
+  <img class="bg-hills" src="assets/svg/hills.svg" alt="">
+  <img class="bg-flower f1" src="assets/svg/flower-pink.svg" alt="">
+  <img class="bg-flower f2" src="assets/svg/flower-purple.svg" alt="">
+  <img class="bg-flower f3" src="assets/svg/flower-tulip.svg" alt="">
+  <img class="bg-flower f4" src="assets/svg/flower-pink.svg" alt="">
+  <img class="bg-flower f5" src="assets/svg/flower-purple.svg" alt="">
+  <img class="bg-flower f6" src="assets/svg/flower-tulip.svg" alt="">
+  <img class="bg-flower f7" src="assets/svg/flower-pink.svg" alt="">
+  <img class="bg-flower f8" src="assets/svg/flower-purple.svg" alt="">
+  <img class="bg-twinkle t1" src="assets/svg/sparkle.svg" alt="">
+  <img class="bg-twinkle t2" src="assets/svg/star.svg" alt="">
+  <img class="bg-twinkle t3" src="assets/svg/heart.svg" alt="">
+  <img class="bg-twinkle t4" src="assets/svg/sparkle.svg" alt="">
+  <img class="bg-twinkle t5" src="assets/svg/star.svg" alt="">
+  <img class="bg-twinkle t6" src="assets/svg/heart.svg" alt="">
+  <img class="bg-twinkle t7" src="assets/svg/sparkle.svg" alt="">
+  <img class="bg-twinkle t8" src="assets/svg/star.svg" alt="">
+  <img class="bg-twinkle t9" src="assets/svg/heart.svg" alt="">
+  <img class="bg-twinkle t10" src="assets/svg/sparkle.svg" alt="">
+  <img class="bg-petal petal-1" src="assets/svg/flower-pink.svg" alt="">
+  <img class="bg-petal petal-2" src="assets/svg/flower-purple.svg" alt="">
+  <img class="bg-petal petal-3" src="assets/svg/flower-tulip.svg" alt="">
+  <img class="bg-petal petal-4" src="assets/svg/flower-pink.svg" alt="">
+  <img class="bg-petal petal-5" src="assets/svg/flower-tulip.svg" alt="">
+  <img class="bg-butterfly bf-1" src="assets/svg/butterfly.svg" alt="">
+  <img class="bg-butterfly bf-2" src="assets/svg/butterfly.svg" alt="">
+  <img class="bg-heart-rise hr-1" src="assets/svg/heart.svg" alt="">
+  <img class="bg-heart-rise hr-2" src="assets/svg/heart.svg" alt="">
+  <img class="bg-heart-rise hr-3" src="assets/svg/heart.svg" alt="">
+  <img class="bg-dino bg-dino-trex" src="assets/svg/dino-trex.svg" alt="">
+  <img class="bg-dino bg-dino-bronto" src="assets/svg/dino-bronto.svg" alt="">
+  <img class="bg-dino bg-dino-stego" src="assets/svg/dino-stego.svg" alt="">
+</div>
+<button id="sound-toggle" aria-label="Mute sound" aria-pressed="false">
+  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4L5 8H2v8h3l6 4zM15 8a6 6 0 010 8M18 5a10 10 0 010 14"/><path class="muted-slash" d="M3 3l18 18"/></svg>
+</button>
+<div id="app">
+
+  <section id="screen-name" class="screen" hidden>
+    <div class="name-card">
+      <h2 class="name-q">Who's playing?</h2>
+      <input id="name-input" type="text" maxlength="12" autocomplete="off" autocapitalize="words" spellcheck="false" placeholder="Name">
+      <button id="name-go" class="name-go"><img src="assets/svg/star.svg" alt=""><span>Play</span></button>
+    </div>
+  </section>
+
+  <section id="screen-menu" class="screen">
+    <button id="name-badge" class="name-badge" aria-label="Change player">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg>
+      <span id="name-badge-text"></span>
+    </button>
+    <h1 class="menu-title">Number Fun</h1>
+    <div class="menu-buttons">
+      <button id="btn-look" class="mode-btn" data-mode="look">
+        <img src="assets/svg/dino-mint.svg" alt="">
+        <span>Look</span>
+      </button>
+      <button id="btn-practice" class="mode-btn" data-mode="practice">
+        <img src="assets/svg/dino-pink.svg" alt="">
+        <span>No Look</span>
+      </button>
+      <button id="btn-challenge" class="mode-btn" data-mode="challenge">
+        <img src="assets/svg/star.svg" alt="">
+        <span>Challenge</span>
+      </button>
+      <button id="btn-hop" class="mode-btn" data-mode="hop">
+        <img src="assets/svg/dino-bronto.svg" alt="">
+        <span>Hop</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="screen-pick" class="screen" hidden>
+    <button class="home-btn" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+    </button>
+    <img id="pick-mode-icon" class="pick-mode-icon" src="assets/svg/dino-pink.svg" alt="">
+    <div id="pick-grid" class="pick-grid">
+      <button class="num-tile" data-n="1">1</button>
+      <button class="num-tile" data-n="2">2</button>
+      <button class="num-tile" data-n="3">3</button>
+      <button class="num-tile" data-n="4">4</button>
+      <button class="num-tile" data-n="5">5</button>
+      <button class="num-tile" data-n="6">6</button>
+      <button class="num-tile" data-n="7">7</button>
+      <button class="num-tile" data-n="8">8</button>
+      <button class="num-tile" data-n="9">9</button>
+      <button class="num-tile" data-n="10">10</button>
+      <button class="num-tile" data-n="11">11</button>
+      <button class="num-tile" data-n="12">12</button>
+    </div>
+  </section>
+
+  <section id="screen-practice" class="screen" hidden>
+    <button class="home-btn" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+    </button>
+    <img class="pr-dino" src="assets/svg/dino-trex.svg" alt="">
+    <button id="pr-card" class="pr-num-card" type="button" tabindex="-1" aria-label="I said it"><span id="pr-num"></span></button>
+    <div id="ct-wheel" class="lk-wheel ct-wheel"><button id="ct-card" class="lk-card" type="button" tabindex="-1" aria-label="I said it"></button><div id="ct-strip" class="lk-strip" aria-hidden="true"></div></div>
+    <button id="trick-btn" class="trick-btn" type="button" tabindex="-1" aria-pressed="false" hidden></button>
+    <div class="progress-row" id="pr-progress"></div>
+  </section>
+
+  <section id="screen-look" class="screen" hidden>
+    <button class="home-btn" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+    </button>
+    <img class="lk-dino" src="assets/svg/dino-bronto.svg" alt="">
+    <div id="lk-wheel" class="lk-wheel">
+      <button id="lk-card" class="lk-card" type="button" tabindex="-1" aria-label="I said it"></button>
+      <div id="lk-strip" class="lk-strip" aria-hidden="true"></div>
+    </div>
+    <div class="progress-row" id="lk-progress"></div>
+  </section>
+
+  <section id="screen-challenge" class="screen" hidden>
+    <button class="home-btn" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+    </button>
+    <div id="ch-count-label" class="ch-count-label"></div>
+    <img class="ch-dino" id="ch-dino" src="assets/svg/dino-stego.svg" alt="">
+    <div class="ch-shown-card"><div id="ch-shown"></div></div>
+    <div id="ch-kind" class="ch-kind" hidden>Try again!</div>
+    <div id="ch-choices" class="ch-choices"></div>
+    <div class="progress-row" id="ch-progress"></div>
+  </section>
+
+  <section id="screen-finish" class="screen" hidden>
+    <button class="home-btn" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+    </button>
+    <img class="finish-burst" src="assets/svg/burst.svg" alt="">
+    <img class="finish-rainbow" src="assets/svg/rainbow.svg" alt="">
+    <img class="finish-dino" src="assets/svg/dino-trex-cheer.svg" alt="">
+    <h1 class="finish-title">Yay!</h1>
+    <div class="finish-stars" id="finish-stars"></div>
+    <div id="finish-count-label" class="ch-count-label finish-count-label"></div>
+    <div id="finish-collect" class="finish-collect"></div>
+    <img class="finish-heart" style="top:20%;left:20%;" src="assets/svg/heart.svg" alt="">
+    <img class="finish-heart" style="top:15%;left:70%;animation-delay:-1s;" src="assets/svg/heart.svg" alt="">
+    <img class="finish-heart" style="top:60%;left:85%;animation-delay:-2s;" src="assets/svg/heart.svg" alt="">
+    <div class="finish-buttons">
+      <button id="btn-again" class="finish-btn"><img src="assets/svg/star.svg" alt=""><span>Play again</span></button>
+      <button id="btn-menu" class="finish-btn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+        <span>Menu</span>
+      </button>
+    </div>
+  </section>
+
+  <section id="screen-hop" class="screen" hidden>
+    <img class="hop-rainbow" src="assets/svg/rainbow.svg" alt="">
+    <img class="hop-cloud hop-cloud-1" src="assets/svg/cloud-a.svg" alt="">
+    <img class="hop-cloud hop-cloud-2" src="assets/svg/cloud-b.svg" alt="">
+    <div class="hop-hills"><div class="hop-hills-track hh-back"><img src="assets/svg/hop-hills-back.svg" alt=""><img src="assets/svg/hop-hills-back.svg" alt=""></div><div class="hop-hills-track hh-mid"><img src="assets/svg/hop-hills-mid.svg" alt=""><img src="assets/svg/hop-hills-mid.svg" alt=""></div><div id="hop-hills-track" class="hop-hills-track hh-front"><img src="assets/svg/hop-hills-front.svg" alt=""><img src="assets/svg/hop-hills-front.svg" alt=""></div></div>
+    <div class="hop-ground"></div>
+    <div id="hop-pickups" class="hop-pickups"></div>
+    <div id="hop-bronto" class="hop-bronto"><img src="assets/svg/dino-bronto.svg" alt=""></div>
+    <div id="hop-sun" class="hop-sun"></div>
+    <div class="hop-hud"><div id="hop-timer" class="hop-timer">60</div><div id="hop-basket" class="hop-basket"><span id="hop-count">0 / 0</span></div></div>
+    <div class="hop-origin" data-edge="t"></div><div class="hop-origin" data-edge="b"></div><div class="hop-origin" data-edge="l"></div><div class="hop-origin" data-edge="r"></div>
+    <div id="hop-card" class="hop-card" hidden>
+      <img id="hop-cheer" class="hop-cheer" src="assets/svg/dino-bronto-cheer.svg" alt="">
+      <div class="hop-stats">
+        <div class="hop-stat"><span id="hop-today">0</span><small>Today</small><em id="hop-passed" class="hop-passed"></em></div>
+        <div class="hop-stat"><span id="hop-best-today">0</span><small>Best Today</small></div>
+        <div class="hop-stat"><span id="hop-best-ever">0</span><small>Best Ever</small></div>
+      </div>
+      <button id="hop-again" class="hop-again"><span>Again</span></button>
+    </div>
+    <button class="home-btn" aria-label="Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/></svg>
+    </button>
+  </section>
+
+</div>
+<div id="fx-layer"></div>
+<!-- N31: iPad-only clone of the rainbow, painted above #fx-layer so the finish-screen
+     dino explosion stays under the rainbow's arc (Joe 2026-09-26). Hidden everywhere else. -->
+<img id="rainbow-front" class="bg-rainbow" src="assets/svg/rainbow.svg" alt="" aria-hidden="true">
+<script type="module" src="app.js"></script>
+</body>
+</html>

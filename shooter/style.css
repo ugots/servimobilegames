@@ -1,0 +1,227 @@
+/* White on black. Overrides the shared menu kit's warm palette for this game only. */
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #000;
+  overflow: hidden;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#field {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  background: #000;
+}
+
+.gk-screen { background: #000; color: #fff; }
+.gk-overlay { background: rgba(0, 0, 0, 0.82); backdrop-filter: none; color: #fff; }
+.gk-title, .gk-title-sm, .gk-score-line { color: #fff; text-shadow: none; }
+.gk-subtitle { color: #ccc; }
+/* Title sky (title_sky.js). .gk-screen is already position: fixed in _base/menu.css, so the canvas fills it. */
+.gk-menu-root .gk-screen.shooter-has-sky { background: #03050b; }
+.shooter-sky { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+.shooter-has-sky > :not(.shooter-sky) { position: relative; z-index: 1; }
+.shooter-has-sky .gk-title { text-shadow: 0 2px 12px #000; }
+.shooter-mobile-howto { display: none; }
+.gk-btn {
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  box-shadow: none;
+}
+.gk-btn-primary { background: #fff; color: #000; border-color: #fff; }
+.gk-btn-quiet { background: transparent; color: #ccc; border-color: transparent; }
+/* Pause and game-over Exit: outlined and opaque like Restart, so a dimmed rock never shows through. */
+.gk-menu-root .gk-panel .gk-btn.gk-btn-quiet,
+.gk-menu-root .gk-panel #shooter-restart-btn {
+  background: #000;
+  color: #fff;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #fff;
+  box-shadow: 0 2px 0 rgba(255, 255, 255, 0.35);
+}
+.gk-exit-link { color: #ccc; }
+.gk-menu-root .gk-screen > .gk-exit-link {
+  width: min(320px, 80vw);
+  padding: 14px 20px;
+  border: 1px solid #849eae;
+  border-radius: 10px;
+  background: #101b29;
+  color: #e4f4ff;
+  font: 700 1.05rem system-ui, sans-serif;
+  text-decoration: none;
+  box-shadow: 0 2px 0 #405869;
+}
+.gk-menu-root .gk-screen > .gk-exit-link:hover { background: #18334a; border-color: #7cdbff; }
+.gk-menu-root .gk-screen > .gk-exit-link:focus-visible { outline: 3px solid #7cdbff; outline-offset: 3px; }
+.gk-menu-root .gk-screen > .gk-exit-link:active { transform: translateY(1px); box-shadow: none; }
+.gk-menu-root .gk-screen > .gk-exit-link:disabled { opacity: .45; cursor: not-allowed; }
+
+/* One menu control size and type scale across title, pause, and game over. */
+.gk-menu-root .gk-screen .gk-buttons {
+  width: min(320px, 80vw);
+}
+.gk-menu-root .gk-screen .gk-btn,
+.gk-menu-root .gk-screen > .gk-exit-link {
+  box-sizing: border-box;
+  width: 100%;
+  height: 54px;
+  padding: 0 20px;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  font: 700 1.05rem system-ui, -apple-system, "Segoe UI", sans-serif;
+  text-align: center;
+  box-shadow: 0 2px 0 rgba(255, 255, 255, .35);
+}
+.gk-menu-root .gk-screen > .gk-exit-link {
+  width: min(320px, 80vw);
+}
+.gk-menu-root .gk-screen .gk-btn-primary {
+  background: #fff;
+  color: #000;
+}
+.gk-menu-root .gk-screen .gk-btn:not(.gk-btn-primary),
+.gk-menu-root .gk-screen > .gk-exit-link {
+  background: #000;
+  color: #fff;
+}
+.gk-menu-root .gk-screen .gk-btn:hover,
+.gk-menu-root .gk-screen > .gk-exit-link:hover {
+  background: #18334a;
+  border-color: #7cdbff;
+  color: #fff;
+}
+.gk-menu-root .gk-screen .gk-btn:focus-visible,
+.gk-menu-root .gk-screen > .gk-exit-link:focus-visible {
+  outline: 3px solid #7cdbff;
+  outline-offset: 3px;
+}
+.gk-menu-root .gk-screen .gk-btn:disabled,
+.gk-menu-root .gk-screen > .gk-exit-link:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Phone controls: a 190px zone under the portrait field (portraitControlsH in config). */
+.sm-controls {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: var(--sm-band, 190px);
+  padding: 61px 8px calc(8px + env(safe-area-inset-bottom));
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 8px;
+  background: linear-gradient(#0b111a, #05070d);
+  border-top: 1px solid #22344a;
+  z-index: 5;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+.sm-controls[hidden] { display: none; }
+.sm-zone-turn { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.sm-zone-thrust, .sm-zone-fire { display: grid; }
+.sm-pad {
+  height: 121px;
+  box-sizing: border-box;
+  border-radius: 14px;
+  border: 1px solid #4a5a6c;
+  color: #dfe9f5;
+  font: 700 14px system-ui, sans-serif;
+  letter-spacing: 0.08em;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.035) 0 1px, transparent 1px 3px), linear-gradient(#3a4552, #1b232d 55%, #12181f);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35), inset 0 -2px 0 rgba(0,0,0,.5), inset 1px 0 0 rgba(255,255,255,.08), 0 3px 0 #000, 0 4px 8px rgba(0,0,0,.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0;
+  touch-action: none;
+}
+.sm-pad svg { width: 28px; height: 28px; flex: none; }
+.sm-label { font: 700 14px system-ui, sans-serif; letter-spacing: .08em; }
+.sm-pad.sm-down {
+  color: #e8f8ff;
+  border-color: #7cdbff;
+  background: repeating-linear-gradient(90deg, rgba(255,255,255,.04) 0 1px, transparent 1px 3px), linear-gradient(#1f4d6b, #12324a);
+  box-shadow: inset 0 3px 8px rgba(0,0,0,.6), 0 0 14px rgba(124,219,255,.65);
+  transform: translateY(2px);
+}
+
+/* HUD (S4): system-font scale, tabular digits, Score dominant. D-040: ~48/24 px at 1920, 64/32 px at 2560. */
+.gk-hud { align-items: flex-start; justify-content: space-between; font-family: system-ui, -apple-system, "Segoe UI", sans-serif; }
+.gk-hud {
+  box-sizing: border-box;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  pointer-events: none;
+}
+.gk-hud button { pointer-events: auto; }
+.gk-hud-field { min-width: 0; }
+.gk-hud-slot { min-width: 0; }
+.gk-hud-slot { display: flex; align-items: baseline; gap: 20px; flex: 1; }
+.gk-hud-right { justify-content: flex-end; align-items: flex-start; gap: 8px; }
+.gk-hud-field { color: #fff; text-shadow: 0 2px 4px #000, 0 0 12px #000, 0 0 24px #000; font-variant-numeric: tabular-nums; font-weight: 700; font-size: clamp(20px, 2.5vw, 48px); letter-spacing: 0.01em; }
+.gk-hud-field:first-child { font-size: clamp(26px, 2.5vw, 48px); }
+.gk-hud-label { color: #aab; font-weight: 500; font-size: clamp(12px, 1.25vw, 24px); text-transform: uppercase; letter-spacing: 0.08em; margin-right: 8px; }
+@media (min-width: 2400px) {
+  .gk-hud-field { font-size: 64px; }
+  .gk-hud-label { font-size: 32px; }
+}
+@media (max-aspect-ratio: 1/1) {
+  .gk-hud { gap: 6px; padding: 8px 10px; }
+  .gk-hud-right { gap: 6px; }
+  .gk-hud-btn { width: 42px; height: 42px; min-width: 42px; min-height: 42px; }
+  .shooter-desktop-howto { display: none; }
+  .shooter-mobile-howto { display: inline; }
+  .gk-hud-field { font-size: 20px; }
+  .gk-hud-field:first-child { font-size: 28px; }
+  .gk-hud-label { font-size: 11px; }
+  .gk-hud-slot { gap: 12px; }
+}
+.gk-btn { transition: transform 0.08s ease, box-shadow 0.08s ease; box-shadow: 0 2px 0 rgba(255, 255, 255, 0.35); }
+.gk-btn:active, .gk-hud-btn:active { transform: translateY(1px) scale(0.98); box-shadow: none; }
+.gk-title { letter-spacing: 0.04em; }
+.shooter-logo { display: block; width: 112px; height: 112px; margin: 0 auto 12px; }
+@media (max-aspect-ratio: 1/1) { .shooter-logo { width: 88px; height: 88px; margin-bottom: 8px; } }
+#shooter-best { margin-top: 4px; }
+#shooter-restart { margin: 12px 0 0; }
+@media (pointer: coarse) { #shooter-restart { display: none; } }
+.gk-hud-btn[aria-pressed="true"] { color: #ccc; border-style: dashed; }
+.gk-hud-btn svg { display: block; margin: auto; }
+.gk-hud-btn {
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  min-height: 48px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 8px;
+  font-weight: bold;
+}
+.gk-hud-btn + .gk-hud-btn { margin-left: 0; }
+.gk-btn:hover, .gk-hud-btn:hover { background: #18334a; border-color: #7cdbff; color: #fff; }
+.gk-btn:focus-visible, .gk-hud-btn:focus-visible { outline: 3px solid #7cdbff; outline-offset: 3px; }
+.gk-btn:disabled, .gk-hud-btn:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+@media (max-aspect-ratio: 1/1) {
+  .gk-hud .gk-hud-btn { width: 42px; height: 42px; min-width: 42px; min-height: 42px; }
+}

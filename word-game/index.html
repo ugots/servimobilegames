@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Letter Pot</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="apple-touch-icon" href="favicon.svg">
+<link rel="stylesheet" href="assets/art.css">
+<link rel="stylesheet" href="../_base/menu.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="lp-bg" aria-hidden="true"><div class="lp-bg-glow lp-bg-a"></div><div class="lp-bg-glow lp-bg-b"></div><div class="lp-bg-motif"></div></div>
+<div id="playArea" class="gk-hidden">
+<header class="app-header">
+  <div class="lp-brand"><img class="logo" src="favicon.svg" alt="Letter Pot logo"><h1>Letter Pot</h1></div>
+  <button id="lp-menu" type="button" title="Menu (Esc)" aria-keyshortcuts="Escape">Menu</button>
+  <button id="lp-sound" type="button" aria-label="Sound on" aria-pressed="false" title="Sound on"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="lp-speaker" d="M3 9h4l5-4v14l-5-4H3z"/><path class="lp-waves" d="M16 8a6 6 0 0 1 0 8m2.5-11a10 10 0 0 1 0 14"/><path class="lp-slash" d="M4 20 20 4"/></svg></button>
+</header>
+
+<main class="board lp-table">
+  <div class="pot-row"><div id="pot" class="pot" aria-label="Letter pot: drag or tap tiles to build a word"></div><div class="pot-tools"><button id="lp-shuffle" type="button" title="Shuffle letters">Shuffle</button><button id="lp-giveup" type="button">Give up</button></div></div>
+
+  <div id="tray" class="tray" aria-label="Word you are building"></div>
+
+  <div class="tray-actions">
+    <button id="submit-word" type="button">Submit word</button>
+    <button id="clear-tray" type="button">Clear</button>
+  </div>
+
+  <p id="message" class="message" aria-live="polite"></p>
+  <div class="status-row lp-controlbar">
+    <span id="round-progress" hidden></span>
+    <button id="next-pot" type="button">New Pot</button>
+  </div>
+
+  <p id="new-tally" class="tally"></p>
+
+  <section class="found-section">
+    <h2>Found this pot</h2>
+    <div class="lp-found-heads" aria-hidden="true"><span>3 letters <b>10</b></span><span>4 letters <b>20</b></span><span>5 letters <b>40</b></span><span>6 letters <b>70</b></span><span>7+ letters <b>110+</b></span></div>
+    <ul id="found-list" class="found-list"></ul>
+  </section>
+</main>
+<div id="lp-best-toast" class="lp-best-toast" role="status" aria-live="polite" hidden></div>
+
+</div>
+
+<div id="lp-summary" class="lp-summary gk-hidden" role="dialog" aria-modal="true" aria-labelledby="lp-summary-title"><div class="lp-summary-card lp-table"><h2 id="lp-summary-title">Pot summary</h2><p id="lp-summary-score"></p><p id="lp-summary-new"></p><ul id="lp-summary-words" class="found-list"></ul><div class="lp-summary-actions"><button id="lp-summary-next" type="button">Next pot</button><button id="lp-summary-keep" type="button">Keep playing</button><button id="lp-summary-exit" type="button">Exit</button></div></div></div>
+
+<div id="lp-giveup-dialog" class="lp-summary gk-hidden" role="dialog" aria-modal="true" aria-labelledby="lp-giveup-title"><div class="lp-summary-card lp-table"><h2 id="lp-giveup-title">Give up this pot?</h2><p id="lp-giveup-text"></p><div class="lp-gu-lists"><h3 id="lp-gu-found-h">You found</h3><ul id="lp-gu-found" class="found-list"></ul><h3>Still in the pot</h3><ul id="lp-gu-missed" class="found-list"></ul></div><div class="lp-summary-actions"><button id="lp-gu-yes" class="lp-gu-primary" type="button">Show words</button><button id="lp-gu-no" class="lp-gu-secondary" type="button">Keep playing</button><button id="lp-gu-new" class="lp-gu-primary" type="button">New pot</button></div></div></div>
+
+<script src="src/enable-words.js"></script>
+<script src="src/words.js"></script>
+<script src="src/game.js"></script>
+<script src="src/pot-tools.js"></script>
+<script src="src/celebrate.js"></script>
+<script src="src/bg.js"></script>
+<script type="module" src="src/audio.js"></script>
+<script type="module" src="src/menu-glue.js"></script>
+</body>
+</html>

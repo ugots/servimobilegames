@@ -23,7 +23,9 @@ export function mountPromo({ current, parent } = {}) {
   function render() {
     root.textContent = "";
     if (!data || !Array.isArray(data.games)) { root.classList.add("gk-hidden"); return; }
-    const games = data.games.filter((g) => g.slug !== current);
+    const segs = location.pathname.split("/").filter(Boolean);
+    const self = (data.games.find((g) => segs.includes(g.slug)) || {}).slug || current;
+    const games = data.games.filter((g) => g.slug !== self);
     if (!games.length) { root.classList.add("gk-hidden"); return; }
     const head = el("div", "gk-promo-head");
     head.appendChild(el("span", "gk-promo-h", "More games by " + (data.studio || "ServiMobileGames")));

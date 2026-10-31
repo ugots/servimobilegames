@@ -8,6 +8,7 @@
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="../_base/promo.css">
 </head>
 <body>
 <canvas id="field"></canvas>
@@ -61,6 +62,9 @@
 
 <script type="module" src="game.js"></script>
 <script type="module">
+import { mountPromo } from "../_base/promo.js";
+for (const id of ["pause", "over"]) { const e = document.getElementById(id); if (e) mountPromo({ current: "castle-defense", parent: e }); }
+{ const m = document.getElementById("menu"); if (m) mountPromo({ current: "castle-defense", parent: m }).el.classList.add("gk-promo-quiet"); }
 import { hookGameOver } from "../_base/ads.js";
 hookGameOver(document.getElementById("over"), "castle-defense", document.querySelector("#over .buttons"));
 </script>

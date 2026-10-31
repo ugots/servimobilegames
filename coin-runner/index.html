@@ -135,7 +135,7 @@
   <script type="module" src="src/main.js"></script>
 <script type="module">
 import { mountPromo } from "../_base/promo.js";
-for (const id of ["pauseScreen", "gameOver"]) { const e = document.getElementById(id); if (e) mountPromo({ current: "coin-runner", parent: e }); }
+for (const id of ["menu", "pauseScreen", "gameOver"]) { const e = document.getElementById(id); if (e) mountPromo({ current: "coin-runner", parent: e }); }
 import { hookGameOver } from "../_base/ads.js";
 hookGameOver(document.getElementById("gameOver"), "coin-runner", document.querySelector("#gameOver .gk-buttons"));
 </script>

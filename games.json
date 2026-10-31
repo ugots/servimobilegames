@@ -6,7 +6,7 @@
     {
       "slug": "anagram-game",
       "title": "Anagram Ladder",
-      "tagline": "Calm word unscrambling, one more letter each level",
+      "tagline": "Calm unscrambling, one more letter each level.",
       "package": "com.servimobilegames.anagramladder",
       "play": "https://play.google.com/store/apps/details?id=com.servimobilegames.anagramladder",
       "web": "https://ugots.github.io/servimobilegames/anagram-game/",
@@ -15,7 +15,7 @@
     {
       "slug": "castle-defense",
       "title": "Castle Defense",
-      "tagline": "Hold the wall against waves of raiders",
+      "tagline": "Hold the wall against waves of raiders.",
       "package": "com.servimobilegames.castledefense",
       "play": "https://play.google.com/store/apps/details?id=com.servimobilegames.castledefense",
       "web": "https://ugots.github.io/servimobilegames/castle-defense/",
@@ -24,7 +24,7 @@
     {
       "slug": "coin-runner",
       "title": "Coin Runner",
-      "tagline": "Dodge enemies and grab coins as it speeds up",
+      "tagline": "Dodge enemies, grab coins, survive the ramp.",
       "package": "com.servimobilegames.coinrunner",
       "play": "https://play.google.com/store/apps/details?id=com.servimobilegames.coinrunner",
       "web": "https://ugots.github.io/servimobilegames/coin-runner/",
@@ -33,7 +33,7 @@
     {
       "slug": "number-game",
       "title": "Number Fun",
-      "tagline": "Gentle counting play for little mathematicians",
+      "tagline": "A gentle skip-counting game, no pressure.",
       "package": "com.servimobilegames.numberfun",
       "play": "https://play.google.com/store/apps/details?id=com.servimobilegames.numberfun",
       "web": "https://ugots.github.io/servimobilegames/number-game/",
@@ -42,7 +42,7 @@
     {
       "slug": "shooter",
       "title": "Asteroid Breaker",
-      "tagline": "Classic asteroid blasting in a 3D space",
+      "tagline": "Classic asteroid blasting in a 3D arena.",
       "package": "com.servimobilegames.asteroidbreaker",
       "play": "https://play.google.com/store/apps/details?id=com.servimobilegames.asteroidbreaker",
       "web": "https://ugots.github.io/servimobilegames/shooter/",
@@ -51,7 +51,7 @@
     {
       "slug": "word-game",
       "title": "Letter Pot",
-      "tagline": "Build words from nine letters, no timer",
+      "tagline": "Spell words from a pot of nine letters.",
       "package": "com.servimobilegames.letterpot",
       "play": "https://play.google.com/store/apps/details?id=com.servimobilegames.letterpot",
       "web": "https://ugots.github.io/servimobilegames/word-game/",
@@ -60,7 +60,7 @@
     {
       "slug": "cipher-shift",
       "title": "Cipher Shift",
-      "tagline": "Turn the brass rings and crack the word",
+      "tagline": "Turn the brass rings to reveal the word.",
       "package": "com.servimobilegames.ciphershift",
       "play": "https://play.google.com/store/apps/details?id=com.servimobilegames.ciphershift",
       "web": "https://ugots.github.io/servimobilegames/cipher-shift/",

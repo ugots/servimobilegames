@@ -25,7 +25,8 @@ export function mountPromo({ current, parent } = {}) {
     if (!data || !Array.isArray(data.games)) { root.classList.add("gk-hidden"); return; }
     const games = data.games.filter((g) => g.slug !== current);
     if (!games.length) { root.classList.add("gk-hidden"); return; }
-    root.appendChild(el("div", "gk-promo-head", "More games by " + (data.studio || "ServiMobileGames")));
+    const head = el("div", "gk-promo-head");
+    head.appendChild(el("span", "gk-promo-h", "More games by " + (data.studio || "ServiMobileGames")));
     const row = el("div", "gk-promo-row");
     games.forEach((g) => {
       const card = el("div", "gk-promo-card");
@@ -36,19 +37,20 @@ export function mountPromo({ current, parent } = {}) {
       img.loading = "lazy";
       a.appendChild(img);
       a.appendChild(el("span", "gk-promo-title", g.title));
-      a.appendChild(el("span", "gk-promo-tag", g.tagline));
+      if (g.tagline) a.appendChild(el("span", "gk-promo-tag", g.tagline));
       card.appendChild(a);
       if (!inApp) {
         const p = link(g.play, "gk-promo-play", true);
-        p.textContent = "Get it on Google Play";
+        p.textContent = "Google Play";
         card.appendChild(p);
       }
       row.appendChild(card);
     });
-    root.appendChild(row);
     const all = link(data.hub, "gk-promo-all", !inApp);
     all.textContent = "All games";
-    root.appendChild(all);
+    head.appendChild(all);
+    root.appendChild(head);
+    root.appendChild(row);
     root.classList.remove("gk-hidden");
   }
 

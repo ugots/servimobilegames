@@ -8,7 +8,7 @@ SRC = os.environ.get("GAMES_SRC", r"C:\AI\local-llm-tools\Games")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FOLDERS = ["_base", "anagram-game", "castle-defense", "coin-runner",
            "number-game", "shooter", "word-game", "cipher-shift"]
-SKIP_DIRS = {"tools", "artifacts", "reports", "__pycache__", ".pytest_cache", "node_modules", ".venv", "Demo"}
+SKIP_DIRS = {"tools", "artifacts", "reports", "__pycache__", ".pytest_cache", "node_modules", ".venv", "Demo", "tests", "preedit"}
 SKIP_FILES = ["*.bak*", "*.pre_*", "*.log", "*.py", "capture_recipe.json",
               "RETURN_*.md", "README.md", "ASSETS.md", "*.p7c-backup*"]
 MAX = 20 * 1024 * 1024
@@ -37,6 +37,8 @@ def main():
                 shutil.copy2(s, d)
                 count += 1
         print("%-16s %d files" % (name, count))
+    shutil.copy2(os.path.join(SRC, "_base", "games.json"), os.path.join(ROOT, "games.json"))
+    print("games.json refreshed from _base")
     for b in big:
         print("SKIPPED over 20 MB:", b)
     return 0

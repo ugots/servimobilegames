@@ -10,6 +10,7 @@
 <title>Number Fun</title>
 <script>(function(){var d=document.documentElement;function f(){var w=innerWidth,h=innerHeight,t=(navigator.maxTouchPoints||0)>0||matchMedia('(pointer: coarse)').matches;d.classList.toggle('ipad',t&&Math.min(w,h)>=650&&Math.max(w,h)<=1400);}f();addEventListener('resize',f);addEventListener('orientationchange',f);})();</script>
 <link rel="icon" href="favicon.svg">
+<link rel="stylesheet" href="../_base/promo.css">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="stylesheet" href="style.css">
@@ -216,5 +217,11 @@
      dino explosion stays under the rainbow's arc (Joe 2026-09-26). Hidden everywhere else. -->
 <img id="rainbow-front" class="bg-rainbow" src="assets/svg/rainbow.svg" alt="" aria-hidden="true">
 <script type="module" src="app.js"></script>
+<script type="module">
+import { mountPromo } from "../_base/promo.js";
+mountPromo({ current: "number-game", parent: document.getElementById("screen-menu") }).el.classList.add("gk-promo-quiet");
+document.querySelector("#screen-menu .gk-promo").style.cssText = "position:absolute;" + (innerWidth >= 900 ? "top:12px" : "bottom:8px") + ";left:50%;transform:translateX(-50%);z-index:5";
+mountPromo({ current: "number-game", parent: document.getElementById("screen-finish") }).el.style.cssText = "position:absolute;top:84px;left:50%;transform:translateX(-50%);z-index:5";
+</script>
 </body>
 </html>

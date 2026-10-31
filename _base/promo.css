@@ -1,21 +1,33 @@
-/* Cross-promo strip; matches the gk- menu look (menu.css). */
+/* Cross-promo strip: translucent dark panel so it sits on any game. */
 .gk-promo {
   box-sizing: border-box;
-  width: min(92vw, 640px);
-  max-height: 30vh;
-  overflow: hidden;
+  width: min(94vw, 1180px);
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  padding: 6px 8px;
-  font-family: "Georgia", "Iowan Old Style", serif;
-  color: var(--gk-ink, #2a2118);
-  background: var(--gk-surface, #fffaf3);
-  border: 1px solid var(--gk-surface-border, #e4d5c0);
-  border-radius: 10px;
+  gap: 6px;
+  padding: 8px 10px;
+  font-family: system-ui, "Segoe UI", Roboto, sans-serif;
+  color: #f4f1ea;
+  background: rgba(0, 0, 0, .45);
+  border: 1px solid rgba(255, 255, 255, .12);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border-radius: 14px;
   text-align: center;
 }
-.gk-promo-head { font-size: 0.8rem; font-weight: bold; color: var(--gk-accent-strong, #8a4520); }
+.gk-promo a { color: inherit; }
+.gk-promo-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  font-weight: bold;
+  text-align: left;
+}
+.gk-promo-all { margin-left: auto; white-space: nowrap; font-weight: normal; opacity: .85; text-decoration: underline; }
 .gk-promo-row {
   display: flex;
   gap: 8px;
@@ -23,39 +35,61 @@
   overflow-y: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
-  text-align: center;
+  justify-content: safe center;
 }
 .gk-promo-row::-webkit-scrollbar { display: none; }
 .gk-promo-card {
-  flex: 0 0 clamp(96px, 7.3vw, 140px);
-  width: clamp(96px, 7.3vw, 140px);
+  flex: 0 0 clamp(104px, 8.75vw, 168px);
+  width: clamp(104px, 8.75vw, 168px);
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
+  gap: 4px;
   min-width: 0;
 }
 .gk-promo-link {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2px;
-  color: inherit;
+  gap: 3px;
   text-decoration: none;
 }
-.gk-promo-icon { width: 36px; height: 36px; border-radius: 8px; object-fit: contain; }
-.gk-promo-title { font-size: 0.75rem; font-weight: bold; }
-.gk-promo-tag {
-  font-size: 0.65rem;
-  color: var(--gk-ink-soft, #6b5c4c);
+.gk-promo-icon { width: 48px; height: 48px; border-radius: 10px; object-fit: contain; }
+.gk-promo-title {
+  font-size: 13px;
+  font-weight: bold;
   line-height: 1.15;
-  max-height: 3.5em;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.gk-promo-play, .gk-promo-all {
-  font-size: 0.65rem;
-  color: var(--gk-accent, #b5652f);
+.gk-promo-tag {
+  display: none;
+  font-size: 12px;
+  line-height: 1.2;
+  opacity: .8;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
-.gk-promo-all { align-self: center; }
-/* Title screen: quieter */
-.gk-promo-quiet { opacity: 0.85; transform: scale(0.92); }
+.gk-promo-play {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  background: rgba(255, 255, 255, .12);
+  text-decoration: none;
+  white-space: nowrap;
+}
+@media (min-width: 900px) {
+  .gk-promo { padding: 10px 14px; }
+  .gk-promo-head { font-size: 15px; }
+  .gk-promo-icon { width: 72px; height: 72px; border-radius: 14px; }
+  .gk-promo-title { font-size: 17px; }
+  .gk-promo-tag { display: -webkit-box; }
+  .gk-promo-play { font-size: 12px; }
+}
+/* Title screen: quieter, the title stays the hero */
+.gk-promo-quiet { opacity: .8; }
+.gk-promo-quiet .gk-promo-tag { display: none; }

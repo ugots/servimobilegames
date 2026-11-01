@@ -1,5 +1,6 @@
 // Dormant ad hook (MKT1). Plain ES module, no deps. See ADS.md.
 // Never throws and never blocks the game; nothing shows unless a wrapper provides an ad provider.
+import { portalActive, requestMidgameAd, requestRewardedAd } from "./portal.js";
 const TIMEOUT = 15000;
 let fake = false;
 try { fake = /[?&]ads=fake\b/.test(location.search); } catch (e) {}
@@ -19,11 +20,12 @@ function installFake() {
 installFake();
 
 export function adsAvailable() {
-  try { return !!(window.Capacitor?.Plugins?.AdMob || window.ServiAds || window.AndroidAds); } catch (e) { return false; }
+  try { return portalActive() || !!(window.Capacitor?.Plugins?.AdMob || window.ServiAds || window.AndroidAds); } catch (e) { return false; }
 }
 
 // Ask the detected provider; resolves true/false (reward or shown), never rejects, 15 s cap.
 function ask(kind) {
+  if (portalActive()) return kind === "rewarded" ? requestRewardedAd().then((r) => r.rewarded) : requestMidgameAd().then(() => true);
   return new Promise((resolve) => {
     let done = false;
     const cleanups = [];

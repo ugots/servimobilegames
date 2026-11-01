@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="styles.css" />
 <!--og--><meta property="og:title" content="Coin Runner"><meta property="og:description" content="Dodge enemies, grab coins, survive the ramp."><meta property="og:image" content="https://ugots.github.io/servimobilegames/share/coin-runner.png"><meta property="og:url" content="https://ugots.github.io/servimobilegames/coin-runner/"></head>
 <body>
+  <div id="bootLoader" class="boot-loader" role="status"><div class="boot-text">Loading...</div><div class="boot-bar"><i></i></div></div>
   <div id="app">
     <canvas id="game" aria-label="Coin Runner play field"></canvas>
     <canvas id="scene3d" aria-hidden="true"></canvas>
@@ -34,6 +35,8 @@
       </div>
       <button id="pauseBtn" class="icon-btn" aria-label="Pause">||</button>
     </div>
+
+    <div id="firstHint" class="first-hint hidden" aria-live="polite"></div>
 
     <!-- Discrete level-up flourish, fires on top of the continuous difficulty curve -->
     <div id="levelFlourish" class="level-flourish hidden">Level <span id="levelFlourishNum">1</span></div>
@@ -136,8 +139,13 @@
 <script type="module">
 import { mountPromo } from "../_base/promo.js";
 for (const id of ["menu", "pauseScreen", "gameOver"]) { const e = document.getElementById(id); if (e) mountPromo({ current: "coin-runner", parent: e }); }
+import { hidesExit } from "../_base/portal.js";
+if (hidesExit()) { const x = document.getElementById("exitBtn"); if (x) x.style.display = "none"; }
+setTimeout(() => document.getElementById("bootLoader")?.remove(), 20000);
 import { hookGameOver } from "../_base/ads.js";
 hookGameOver(document.getElementById("gameOver"), "coin-runner", document.querySelector("#gameOver .gk-buttons"));
+import { hookPortal } from "../_base/portal.js";
+hookPortal(document.getElementById("hud"), document.getElementById("gameOver"));
 </script>
 </body>
 </html>

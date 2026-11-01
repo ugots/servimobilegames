@@ -8,8 +8,19 @@ function el(tag, cls, text) {
   return n;
 }
 
+// Portal builds: window.GK_PORTAL (or ?portal=) names the host. NO_PROMO hosts ban store/external links.
+export const NO_PROMO = ["crazygames", "poki"];
+export function portalName() {
+  try {
+    const q = new URLSearchParams(location.search).get("portal");
+    return String(q || window.GK_PORTAL || "").toLowerCase();
+  } catch (e) { return ""; }
+}
+
 export function mountPromo({ current, parent } = {}) {
+  const portal = portalName();
   const root = el("div", "gk-promo gk-hidden");
+  if (NO_PROMO.includes(portal)) return { el: root, refresh() {} };
   let data = null;
   const inApp = /wv/.test(navigator.userAgent || "") || !!window.ServiAndroid;
 
@@ -32,7 +43,7 @@ export function mountPromo({ current, parent } = {}) {
     const row = el("div", "gk-promo-row");
     games.forEach((g) => {
       const card = el("div", "gk-promo-card");
-      const a = link(inApp ? g.play : g.web, "gk-promo-link", !inApp);
+      const a = link(inApp && !portal ? g.play : g.web, "gk-promo-link", !inApp);
       const img = el("img", "gk-promo-icon");
       img.src = new URL("../" + g.icon, import.meta.url).href;
       img.alt = "";
@@ -41,7 +52,7 @@ export function mountPromo({ current, parent } = {}) {
       a.appendChild(el("span", "gk-promo-title", g.title));
       if (g.tagline) a.appendChild(el("span", "gk-promo-tag", g.tagline));
       card.appendChild(a);
-      if (!inApp) {
+      if (!inApp && !portal) {
         const p = link(g.play, "gk-promo-play", true);
         p.textContent = "Google Play";
         card.appendChild(p);

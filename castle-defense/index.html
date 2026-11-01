@@ -67,6 +67,8 @@ for (const id of ["pause", "over"]) { const e = document.getElementById(id); if 
 { const m = document.getElementById("menu"); if (m) mountPromo({ current: "castle-defense", parent: m }).el.classList.add("gk-promo-quiet"); }
 import { hookGameOver } from "../_base/ads.js";
 hookGameOver(document.getElementById("over"), "castle-defense", document.querySelector("#over .buttons"));
+import { hookPortal } from "../_base/portal.js";
+hookPortal(document.getElementById("cd-pause"), document.getElementById("over"));
 </script>
 </body>
 </html>

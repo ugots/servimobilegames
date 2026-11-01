@@ -3,6 +3,7 @@ import { InputManager, detectMobile } from "./input.js";
 import { Game } from "./game.js";
 import { createScene3D } from "./scene3d.js";
 import { mountHud } from "../../_base/hud.js";
+import { loadingStop } from "../../_base/portal.js";
 
 const RENDER_2D = new URLSearchParams(window.location.search).get("render") === "2d";
 
@@ -268,6 +269,7 @@ function applyStateToDom(state) {
     setHealth(100);
     if (controlMode === "mobile") els.joystick.classList.remove("hidden");
   } else if (state === "playing") {
+    showFirstHint();
     els.hud.classList.remove("hidden");
     if (!RENDER_2D) hud3d.show();
     if (controlMode === "mobile") els.joystick.classList.remove("hidden");
@@ -285,6 +287,19 @@ function applyStateToDom(state) {
   } else if (state === "thanks") {
     els.thanks.classList.remove("hidden");
   }
+}
+
+// One-time hint for the first 3 s of the very first run (localStorage "coinRunnerHint").
+function showFirstHint() {
+  try {
+    if (localStorage.getItem("coinRunnerHint")) return;
+    localStorage.setItem("coinRunnerHint", "1");
+    const h = document.getElementById("firstHint");
+    h.textContent = (controlMode === "mobile" || (matchMedia("(pointer: coarse)").matches && els.controlModeSelect.value !== "desktop")) ? "Move: joystick. Grab coins, dodge enemies." : "Move: arrows or WASD";
+    h.classList.remove("hidden", "fade");
+    setTimeout(() => h.classList.add("fade"), 2400);
+    setTimeout(() => h.classList.add("hidden"), 3000);
+  } catch (e) {}
 }
 
 function getBest() {
@@ -506,6 +521,7 @@ function loop(now) {
 }
 
 game.setState("menu");
+document.getElementById("bootLoader")?.remove(); loadingStop();
 requestAnimationFrame(loop);
 
 // Exposed for the release-check script (verify.py) only, to force a

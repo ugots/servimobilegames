@@ -2,6 +2,7 @@
 // keys, D-042 auto-pause on blur). Plain ES module, no build step, no deps.
 import { mountPromo } from "./promo.js";
 import { showInterstitial, mountRewardButton } from "./ads.js";
+import { hidesExit, portalInit, gameplayStart, gameplayStop } from "./portal.js";
 
 function el(tag, cls, html) {
   const n = document.createElement(tag);
@@ -29,6 +30,7 @@ export function mountMenu({ title, onPlay, onExit, howTo, onPause, onResume, onF
   titleScreen.appendChild(titleButtons);
   const titleExit = el("button", "gk-exit-link", "Exit");
   titleScreen.appendChild(titleExit);
+  if (hidesExit()) titleExit.style.display = "none";
   root.appendChild(titleScreen);
   const promoSlug = location.pathname.split("/").filter(Boolean).slice(-2)[0] || "";
   mountPromo({ current: promoSlug, parent: titleScreen }).el.classList.add("gk-promo-quiet");
@@ -47,6 +49,7 @@ export function mountMenu({ title, onPlay, onExit, howTo, onPause, onResume, onF
     pauseButtons.appendChild(finishBtn);
   }
   const pauseExitBtn = el("button", "gk-btn gk-btn-quiet", "Exit");
+  if (hidesExit()) pauseExitBtn.style.display = "none";
   pauseButtons.appendChild(pauseExitBtn);
   pauseScreen.appendChild(pauseButtons);
   mountPromo({ current: promoSlug, parent: pauseScreen });
@@ -61,6 +64,7 @@ export function mountMenu({ title, onPlay, onExit, howTo, onPause, onResume, onF
   const againBtn = el("button", "gk-btn gk-btn-primary", "Play again");
   const overExitBtn = el("button", "gk-btn gk-btn-quiet", "Exit");
   overButtons.appendChild(againBtn);
+  if (hidesExit()) overExitBtn.style.display = "none";
   overButtons.appendChild(overExitBtn);
   overScreen.appendChild(overButtons);
   mountRewardButton(overButtons, { onReward: onContinue && (() => { hideAll(); paused = false; onContinue(); }) });
@@ -72,19 +76,22 @@ export function mountMenu({ title, onPlay, onExit, howTo, onPause, onResume, onF
 
   let paused = false;
 
+  portalInit();
   function showTitle() { hideAll(); titleScreen.classList.remove("gk-hidden"); paused = false; }
-  function showPlay() { hideAll(); paused = false; }
+  function showPlay() { hideAll(); paused = false; gameplayStart(); }
   function showPause() {
     if (paused) return;
     paused = true;
     hideAll();
     pauseScreen.classList.remove("gk-hidden");
+    gameplayStop();
     if (onPause) onPause();
   }
   function hidePause() {
     if (!paused) return;
     paused = false;
     hideAll();
+    gameplayStart();
     if (onResume) onResume();
   }
   function showGameOver(score) {
@@ -92,6 +99,7 @@ export function mountMenu({ title, onPlay, onExit, howTo, onPause, onResume, onF
     overScore.textContent = score !== undefined ? `Score: ${score}` : "";
     overScreen.classList.remove("gk-hidden");
     paused = true;
+    gameplayStop();
     showInterstitial({ key: promoSlug });
   }
 

@@ -11,52 +11,68 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://ugots.github.io/servimobilegames/share.png">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f5f6fb;--fg:#1c2233;--card:#fff;--mute:#5b6478;--acc:#2b3a67;--line:#dde1ee}
-@media(prefers-color-scheme:dark){:root{--bg:#12151f;--fg:#e8ebf5;--card:#1b2030;--mute:#9aa3b8;--acc:#8fa4ff;--line:#2a3148}}
+:root{--bg:#0b1020;--bg2:#121935;--card:#141b34;--fg:#eef1fb;--mute:#aab3cf;--acc:#ffc83d;--accfg:#1a1400;--line:#263057;--disp:"Chakra Petch",Impact,system-ui,sans-serif}
 *{box-sizing:border-box}
-body{margin:0;font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg)}
-header{text-align:center;padding:40px 16px 16px}
-header img{width:56px;height:56px}
-h1{margin:8px 0 4px;font-size:1.9rem}
-header p{margin:0;color:var(--mute)}
-main{max-width:1400px;margin:0 auto;padding:16px}
-#grid{display:grid;grid-template-columns:1fr;gap:16px}
-@media(min-width:640px){#grid{grid-template-columns:repeat(2,1fr)}}
-@media(min-width:1000px){#grid{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:1500px){#grid{grid-template-columns:repeat(4,1fr)}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
-.card img{width:64px;height:64px;border-radius:12px}
-.card h2{margin:4px 0 0;font-size:1.2rem}
-.card p{margin:0;color:var(--mute);flex:1}
-.acts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:8px}
-.btn{background:var(--acc);color:var(--bg);padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600;min-height:44px;display:inline-flex;align-items:center}
-.gp{display:inline-flex;min-height:44px;align-items:center;text-decoration:none}
-footer{text-align:center;padding:32px 16px;color:var(--mute)}
-footer a{color:var(--acc)}
+html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--fg);overflow-x:hidden}
+a:focus-visible{outline:3px solid #fff;outline-offset:3px;box-shadow:0 0 0 6px var(--acc)}
+.hero{text-align:center;padding:96px 24px 80px;background:radial-gradient(ellipse at 50% 0,#27356f 0,var(--bg2) 45%,var(--bg) 100%);border-bottom:1px solid var(--line)}
+.hero h1{font:700 clamp(2.2rem,8vw,4.6rem)/1.05 var(--disp);margin:0 0 16px;letter-spacing:.02em;text-transform:uppercase}
+.hero h1 span{color:var(--acc)}
+.hero p{margin:0 auto 32px;max-width:34em;font-size:1.2rem;color:var(--mute)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:12px;background:var(--acc);color:var(--accfg);font:700 1rem var(--disp);letter-spacing:.03em;text-decoration:none;transition:transform .15s,filter .15s}
+.btn:hover{filter:brightness(1.1);transform:translateY(-2px)}
+main{max-width:1240px;margin:0 auto;padding:56px 24px}
+h2.sec{font:700 1.7rem var(--disp);text-transform:uppercase;letter-spacing:.04em;margin:0 0 24px}
+#grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,border-color .2s,box-shadow .2s}
+.card:hover{transform:translateY(-6px);border-color:var(--acc);box-shadow:0 14px 34px rgba(0,0,0,.5)}
+.art{display:block;width:100%;height:auto;aspect-ratio:1200/630;object-fit:cover;background:var(--bg2)}
+.body{padding:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.body h3{margin:0;font:700 1.35rem var(--disp)}
+.body p{margin:0;color:var(--mute);flex:1}
+.acts{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.soon{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px dashed #5a6690;border-radius:12px;color:var(--mute);font-size:.9rem;text-align:center;padding:0 12px}
+.gp{display:flex;align-items:center;justify-content:center;min-height:44px;border:1px solid #5a6690;border-radius:12px;color:var(--fg);text-decoration:none;font-weight:600}
+.nojs{color:var(--mute)}.nojs a{color:var(--acc)}
+footer{text-align:center;padding:40px 24px;border-top:1px solid var(--line);color:var(--mute)}
+footer a{color:var(--acc)}footer p{margin:4px 0}
+@media(min-width:900px){#grid{grid-template-columns:repeat(3,1fr)}.acts{flex-direction:row}.acts .btn{padding:0 18px}.soon,.gp{flex:1}.hero{padding:140px 24px 120px}}
+@media(max-width:599px){
+.hero{padding:56px 16px 48px}.hero p{font-size:1.05rem}
+.hero .btn{width:100%}
+main{padding:32px 16px}
+#grid{grid-template-columns:1fr;gap:20px}
+.card:hover{transform:none}
+.acts .btn,.soon,.gp{width:100%;min-height:48px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style></head><body>
-<header><img src="favicon.svg" alt=""><h1>ServiMobileGames</h1><p>Free games for phone and desktop</p></header>
-<main><div id="grid">
-<div class="card"><img src="anagram-game/favicon.svg" alt="" width="64" height="64"><h2>Anagram Ladder</h2><p>Calm word unscrambling, one more letter each level</p><div class="acts"><a class="btn" href="./anagram-game/">Play in browser</a><a class="gp" href="https://play.google.com/store/apps/details?id=com.servimobilegames.anagramladder">Google Play</a></div></div>
-<div class="card"><img src="castle-defense/favicon.svg" alt="" width="64" height="64"><h2>Castle Defense</h2><p>Hold the wall against waves of raiders</p><div class="acts"><a class="btn" href="./castle-defense/">Play in browser</a><a class="gp" href="https://play.google.com/store/apps/details?id=com.servimobilegames.castledefense">Google Play</a></div></div>
-<div class="card"><img src="coin-runner/favicon.svg" alt="" width="64" height="64"><h2>Coin Runner</h2><p>Dodge enemies and grab coins as it speeds up</p><div class="acts"><a class="btn" href="./coin-runner/">Play in browser</a><a class="gp" href="https://play.google.com/store/apps/details?id=com.servimobilegames.coinrunner">Google Play</a></div></div>
-<div class="card"><img src="number-game/favicon.svg" alt="" width="64" height="64"><h2>Number Fun</h2><p>Gentle counting play for little mathematicians</p><div class="acts"><a class="btn" href="./number-game/">Play in browser</a><a class="gp" href="https://play.google.com/store/apps/details?id=com.servimobilegames.numberfun">Google Play</a></div></div>
-<div class="card"><img src="shooter/favicon.svg" alt="" width="64" height="64"><h2>Asteroid Breaker</h2><p>Classic asteroid blasting in a 3D space</p><div class="acts"><a class="btn" href="./shooter/">Play in browser</a><a class="gp" href="https://play.google.com/store/apps/details?id=com.servimobilegames.asteroidbreaker">Google Play</a></div></div>
-<div class="card"><img src="word-game/favicon.svg" alt="" width="64" height="64"><h2>Letter Pot</h2><p>Build words from nine letters, no timer</p><div class="acts"><a class="btn" href="./word-game/">Play in browser</a><a class="gp" href="https://play.google.com/store/apps/details?id=com.servimobilegames.letterpot">Google Play</a></div></div>
-<div class="card"><img src="cipher-shift/favicon.svg" alt="" width="64" height="64"><h2>Cipher Shift</h2><p>Turn the brass rings and crack the word</p><div class="acts"><a class="btn" href="./cipher-shift/">Play in browser</a><a class="gp" href="https://play.google.com/store/apps/details?id=com.servimobilegames.ciphershift">Google Play</a></div></div>
-</div></main>
-<footer><a id="dev" href="https://play.google.com/store/apps/dev?id=PLACEHOLDER_DEV_ID">Made by ServiMobileGames</a></footer>
+<section class="hero"><h1>Servi<span>Mobile</span>Games</h1><p>Quick arcade games for phone and desktop. Free to play.</p><a class="btn" href="#games">Browse the games</a></section>
+<main id="games"><h2 class="sec">Play now</h2>
+<div id="grid"><p class="nojs">Loading games... With JavaScript off, play directly: <a href="anagram-game/">Anagram Ladder</a>, <a href="castle-defense/">Castle Defense</a>, <a href="coin-runner/">Coin Runner</a>, <a href="number-game/">Number Fun</a>, <a href="shooter/">Asteroid Breaker</a>, <a href="word-game/">Letter Pot</a>, <a href="cipher-shift/">Cipher Shift</a>.</p></div></main>
+<footer><p>Made by ServiMobileGames</p><p><a href="https://jservi.itch.io">jservi.itch.io</a></p></footer>
 <script>
 (function () {
-  var badge = '<svg xmlns="http://www.w3.org/2000/svg" width="135" height="40" viewBox="0 0 135 40" role="img" aria-label="Get it on Google Play"><rect width="135" height="40" rx="6" fill="#000" stroke="#a6a6a6"/><path d="M12 8l14 12-14 12z" fill="#34a853"/><path d="M12 8l10 8.5L26 20z" fill="#4285f4"/><path d="M12 32l10-8.5L26 20z" fill="#ea4335"/><path d="M26 20l5-3 4 3-4 3z" fill="#fbbc04"/><text x="42" y="16" fill="#fff" font-family="Arial,sans-serif" font-size="8">GET IT ON</text><text x="42" y="31" fill="#fff" font-family="Arial,sans-serif" font-size="16" font-weight="bold">Google Play</text></svg>';
+  // Google Play ids are placeholders until real ones land. A game counts as "coming soon"
+  // while its play URL contains "placeholder" or its package starts with PLACEHOLDER_PREFIX.
+  // Set a real package/URL in games.json (and change the prefix) and the badge flips to a live link.
+  var PLACEHOLDER_PREFIX = "com.servimobilegames.";
+  function isPlaceholder(g) {
+    return /placeholder/i.test(g.play || "") || String(g.package || "").indexOf(PLACEHOLDER_PREFIX) === 0;
+  }
   var MAP = { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" };
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return MAP[c]; }); }
   fetch("games.json").then(function (r) { if (!r.ok) throw new Error("bad"); return r.json(); }).then(function (d) {
-    document.getElementById("dev").href = d.playDeveloper;
     document.getElementById("grid").innerHTML = d.games.map(function (g) {
-      return '<div class="card"><img src="' + esc(g.icon) + '" alt="" width="64" height="64"><h2>' + esc(g.title) +
-        '</h2><p>' + esc(g.tagline) + '</p><div class="acts"><a class="btn" href="./' + esc(g.slug) +
-        '/">Play in browser</a><a class="gp" href="' + esc(g.play) + '">' + badge + '</a></div></div>';
+      var play = isPlaceholder(g) ? '<span class="soon">Coming soon on Google Play</span>'
+        : '<a class="gp" href="' + esc(g.play) + '">Get it on Google Play</a>';
+      return '<article class="card"><a href="./' + esc(g.slug) + '/" tabindex="-1" aria-hidden="true"><img class="art" src="share/' + esc(g.slug) +
+        '.png" alt="" width="1200" height="630" loading="lazy"></a><div class="body"><h3>' + esc(g.title) + '</h3><p>' + esc(g.tagline) +
+        '</p><div class="acts"><a class="btn" href="./' + esc(g.slug) + '/">Play in browser</a>' + play + '</div></div></article>';
     }).join("");
   }).catch(function () {});
 })();
